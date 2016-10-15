@@ -1,0 +1,14 @@
+body {
+  text-align: center;
+  margin: 0 auto;
+
+}
+
+img {
+  max-height:15em;
+  max-width:10em;
+}
+
+.navBar{
+  float: left;
+}
