@@ -39,28 +39,34 @@ export default class WatchList extends Component {
     let { watchList } = this.state;
     console.log('watchList component: ', watchList);
     return (
-      <div>
+      <div className='componentContainer'>
+        <h1>Watch List</h1>
         <div>
           {
             watchList.map((anime) => {
               return (
-                <div key={anime.id}>
-                  <h4>{anime.title}</h4>
+                <div key={anime.id} className="encloser">
+
                   <div>
                     <img src={anime.image} data-toggle='modal' data-target={`.bs-example-modal-md${anime.id}`} />
                   </div>
+                  <h4>{anime.title}</h4>
                   <div className={`modal fade bs-example-modal-md${anime.id}`} tabIndex='-1' role='dialog' aria-labelledby='mySmallModalLabel'>
                    <div className='modal-dialog modal-md' role='document'>
                      <div className='modal-content'>
                        <div className='modalPicContainer' >
                         <h3 className='headings title'><b>{anime.title}</b></h3>
+
+                        <iframe allowFullScreen='allowFullScreen' id='player' type='text/html' width='640' height='390'
+                          src={`https://www.youtube.com/embed?listType=search&list=${anime.title} anime`}
+                          frameBorder='0'>
+                          </iframe>
                          <img src={anime.image} alt='main pic' />
                          <div className='animeInfoContainer'>
                           <h4>Type: {anime.type}</h4>
                            <h4>Status: {anime.status}</h4>
                            <h4>Episodes: {anime.episodes}</h4>
-                           <h4>Started: {anime.started}</h4>
-                           <h4>Ended: {anime.finished}</h4>
+                           <h4>Aired: {anime.started} - {anime.finished}</h4>
                            <h4>Rating: {Math.round(anime.rating * 100) / 100}</h4>
                            <h4>Rated: {anime.rated}</h4>
                            <h4>Summary: {anime.summary}</h4>

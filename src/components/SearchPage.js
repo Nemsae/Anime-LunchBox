@@ -17,10 +17,11 @@ export default class SearchPage extends Component {
 
   render () {
     return (
-      <div>
+      <div className="componentContainer">
+        <h1>Search Anime</h1>
         <form onSubmit={this.submitSearch} >
-          <input ref='searchInput' type='text' />
-          <button>Search</button>
+          <input ref='searchInput' type='text' className='form-control searchBar' />
+          <button className="btn btn-primary">Search</button>
         </form>
         <SearchTable />
       </div>

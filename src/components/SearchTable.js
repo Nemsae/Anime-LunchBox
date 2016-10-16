@@ -76,14 +76,16 @@ export default class SearchTable extends Component {
     }
 
     return (
-      <div>
+      <div className="compContainer">
         {
           animeResults.map((anime) => {
             return (
-              <div key={anime.id}>
+              <div key={anime.id} className="encloser">
+                <div className='animeSquare'>
+                <div className="picContainer">
+                  <img src={anime.cover_image} className="pic" data-toggle='modal' data-target={`.bs-example-modal-md${anime.id}`} />
+                </div>
                 <h4>{anime.title}</h4>
-                <div>
-                  <img src={anime.cover_image} data-toggle='modal' data-target={`.bs-example-modal-md${anime.id}`} />
                 </div>
                 <div className={`modal fade bs-example-modal-md${anime.id}`} tabIndex='-1' role='dialog' aria-labelledby='mySmallModalLabel'>
                   <div className='modal-dialog modal-md' role='document'>

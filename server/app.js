@@ -26,6 +26,7 @@ app.use(require('webpack-hot-middleware')(compiler));
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use('/static', express.static('/build'));
 
 //  ROUTES
 app.use('/api', require('./routes/api'));

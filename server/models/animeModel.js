@@ -21,7 +21,8 @@ const toWatchTable = 'towatch';
 //    rated VARCHAR(100),
 //    genres VARCHAR(500),
 //    id INT NOT NULL AUTO_INCREMENT,
-//    PRIMARY KEY (id)
+//    PRIMARY KEY (id, animeId),
+//    UNIQUE(animeId)
 // )`, (err) => {
 //   if (err) throw err;
 // });
@@ -39,14 +40,9 @@ exports.searchSeries = (animeSearch, cb) => {
 
 exports.addFavorite = (favorite, cb) => {
   exports.readData(favoritesTable, (err, favorites) => {
-    if (err) throw (err);
-    let filter = (item) => {
-      return item.id !== favorite.id;
-    };
-    if (favorites.every(filter)) {
-      exports.create(favoritesTable, favorite, cb);
-    }
+    if (err) throw err;
   });
+  exports.create(favoritesTable, favorite, cb);
 };
 
 exports.deleteFavorite = (id, cb) => {
@@ -78,13 +74,8 @@ exports.deleteTowatch = (id, cb) => {
 
 exports.addToWatchList = (toWatch, cb) => {
   exports.readData(toWatchTable, (err, toWatchList) => {
-    if (err) throw (err);
-    let filter = (item) => {
-      return item.id !== toWatch.id;
-    };
-    if (toWatchList.every(filter)) { // fix filter
-      exports.create(toWatchTable, toWatch, cb);
-    }
+    if (err) throw err;
+    exports.create(toWatchTable, toWatch, cb)
   });
 };
 
