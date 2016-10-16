@@ -13,23 +13,63 @@ const API = {
     });
   },
 
-  sendToWatch (anime) {
+  addToWatch (anime) {
     axios.post('/api/anime/watchlist', anime)
       .then((res) => {
-        console.log('res of toWatch in API: ', res);
+        ServerActions.receiveWatchList(res.data);
       })
       .catch((err) => {
-        console.log('ERROR! API.sendToWatch', err);
+        console.log('ERROR! API.addToWatch', err);
       });
   },
 
-  sendFavorite (anime) {
+  addFavorite (anime) {
     axios.post('/api/anime/favorites', anime)
       .then((res) => {
-        console.log('res of toWatch in API: ', res);
+        ServerActions.receiveFavorites(res.data);
       })
       .catch((err) => {
-        console.log('ERROR! API.sendFavorite', err);
+        console.log('ERROR! API.addFavorite', err);
+      });
+  },
+
+  fetchFavorites () {
+    axios.get('/api/anime/favorites')
+      .then((res) => {
+        ServerActions.receiveFavorites(res.data);
+      })
+      .catch((err) => {
+        console.log('ERROR! API.fetchFavorites', err);
+      });
+  },
+
+  fetchWatchList () {
+    axios.get('/api/anime/watchlist')
+      .then((res) => {
+        ServerActions.receiveWatchList(res.data);
+      })
+      .catch((err) => {
+        console.log('ERROR! API.fetchWatchList', err);
+      });
+  },
+
+  deleteFavorite (id) {
+    axios.delete(`/api/anime/favorites?id=${id}`)
+      .then((res) => {
+        API.fetchFavorites();
+      })
+      .catch((err) => {
+        console.log('ERROR! API.deleteFavorite', err);
+      });
+  },
+
+  deleteToWatch (id) {
+    axios.delete(`/api/anime/watchlist?id=${id}`)
+      .then((res) => {
+        API.fetchWatchList();
+      })
+      .catch((err) => {
+        console.log('ERROR! API.deleteFavorite', err);
       });
   }
 };

@@ -7,32 +7,14 @@ const squel = require('squel').useFlavour('mysql');
 const favoritesTable = 'favorites';
 const toWatchTable = 'towatch';
 
-connection.query(`CREATE TABLE IF NOT EXISTS ${favoritesTable} (
-   animeId INT(100),
-   status VARCHAR(100),
-   title VARCHAR(100),
-   episodes VARCHAR(100),
-   image VARCHAR(500),
-   summary VARCHAR(2000),
-   type VARCHAR(100),
-   started VARCHAR(100),
-   finished VARCHAR(100),
-   rating INT(100),
-   rated VARCHAR(100),
-   genres VARCHAR(500),
-   id INT NOT NULL AUTO_INCREMENT,
-   PRIMARY KEY (id)
-)`, (err) => {
-  if (err) throw err;
-});
-// connection.query(`CREATE TABLE IF NOT EXISTS ${favoritesTable} (
+// connection.query(`CREATE TABLE IF NOT EXISTS ${toWatchTable} (
 //    animeId INT(100),
 //    status VARCHAR(100),
 //    title VARCHAR(100),
 //    episodes VARCHAR(100),
 //    image VARCHAR(500),
 //    summary VARCHAR(2000),
-      // type VARCHAR(100),
+//    type VARCHAR(100),
 //    started VARCHAR(100),
 //    finished VARCHAR(100),
 //    rating INT(100),
@@ -45,7 +27,6 @@ connection.query(`CREATE TABLE IF NOT EXISTS ${favoritesTable} (
 // });
 
 exports.searchSeries = (animeSearch, cb) => {
-  console.log('animeSearch in model: ', animeSearch);
   get(`http://hummingbird.me/api/v1/search/anime?query=${animeSearch.anime}`)
     .then((res) => {
       console.log('res.data: ', res.data);
@@ -56,17 +37,54 @@ exports.searchSeries = (animeSearch, cb) => {
     });
 };
 
-exports.addFavorite = (animeToWatch, cb) => {
-  console.log('animeToWatch ID in Model: ', animeToWatch.id);
+exports.addFavorite = (favorite, cb) => {
   exports.readData(favoritesTable, (err, favorites) => {
     if (err) throw (err);
     let filter = (item) => {
-      return item.id !== animeToWatch.id;
+      return item.id !== favorite.id;
     };
     if (favorites.every(filter)) {
-      exports.create(favoritesTable, animeToWatch, cb);
+      exports.create(favoritesTable, favorite, cb);
     }
-    // exports.create(favoritesTable, animeToWatch, (cb));
+  });
+};
+
+exports.deleteFavorite = (id, cb) => {
+  let currId = parseInt(id.id);
+  return new Promise((resolve, reject) => {
+    connection.query(`DELETE FROM ${favoritesTable} WHERE animeId = ${currId}`, (err, undeletedFavorites) => {
+      if (err) return reject(err);
+      exports.readData(favoritesTable, (err, data) => {
+        if (err) throw err;
+        cb(null, data);
+      });
+    });
+  });
+};
+
+exports.deleteTowatch = (id, cb) => {
+  let currId = parseInt(id.id);
+  console.log('currId deleteToWatch: ', currId);
+  return new Promise((resolve, reject) => {
+    connection.query(`DELETE FROM ${toWatchTable} WHERE animeId = ${currId}`, (err, undeletedWatchList) => {
+      if (err) return reject(err);
+      exports.readData(toWatchTable, (err, data) => {
+        if (err) throw err;
+        cb(null, data);
+      });
+    });
+  });
+};
+
+exports.addToWatchList = (toWatch, cb) => {
+  exports.readData(toWatchTable, (err, toWatchList) => {
+    if (err) throw (err);
+    let filter = (item) => {
+      return item.id !== toWatch.id;
+    };
+    if (toWatchList.every(filter)) { // fix filter
+      exports.create(toWatchTable, toWatch, cb);
+    }
   });
 };
 
@@ -87,10 +105,7 @@ exports.create = (tablename, anime, cb) => {
     title: anime.title,
     episodes: anime.episode_count,
     image: anime.cover_image,
-    // summary: 'Error for summary',
-    // summary: JSON.stringify(anime.synopsis),
-    summary: (anime.synopsis).replace("'", "''"),
-    // summary: `""`(anime.synopsis).toString(),
+    summary: (anime.synopsis).replace(/'/g, "''"),
     type: anime.show_type,
     started: anime.started_airing,
     finished: anime.finished_airing,

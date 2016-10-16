@@ -5,12 +5,20 @@ const AnimeActions = {
     API.receiveSearchResults(searchTerm);
   },
 
-  sendToWatch (anime) {
-    API.sendToWatch(anime);
+  addToWatch (anime) {
+    API.addToWatch(anime);
   },
 
-  sendFavorite (anime) {
-    API.sendFavorite(anime);
+  addFavorite (anime) {
+    API.addFavorite(anime);
+  },
+
+  deleteFavorite (id) {
+    API.deleteFavorite(id);
+  },
+
+  deleteToWatch (id) {
+    API.deleteToWatch(id);
   }
 };
 

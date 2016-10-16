@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-// import AnimeActions from '../actions/AnimeActions';
+import AnimeActions from '../actions/AnimeActions';
 import AnimeStore from '../stores/AnimeStore';
+import ServerActions from '../actions/ServerActions';
+import API from '../API';
 import uuid from 'uuid';
 
 export default class FavoritesPage extends Component {
@@ -12,9 +14,11 @@ export default class FavoritesPage extends Component {
     };
 
     this._onChange = this._onChange.bind(this);
+    this._deleteFavorite = this._deleteFavorite.bind(this);
   }
 
   componentWillMount () {
+    API.fetchFavorites();
     AnimeStore.startListening(this._onChange);
   }
 
@@ -28,8 +32,13 @@ export default class FavoritesPage extends Component {
     });
   }
 
+  _deleteFavorite (id) {
+    AnimeActions.deleteFavorite(id);
+  }
+
   render () {
     let { animeFavorites } = this.state;
+    console.log('favs in component:', animeFavorites);
     return (
       <div>
         {
@@ -38,32 +47,33 @@ export default class FavoritesPage extends Component {
               <div key={anime.id}>
                 <h4>{anime.title}</h4>
                 <div>
-                  <img src={anime.cover_image} data-toggle='modal' data-target={`.bs-example-modal-md${anime.id}`} />
+                  <img src={anime.image} data-toggle='modal' data-target={`.bs-example-modal-md${anime.id}`} />
                 </div>
-               <div className={`modal fade bs-example-modal-md${anime.id}`} tabIndex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+               <div id={anime.id} className={`modal fade bs-example-modal-md${anime.id}`} tabIndex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
                  <div className="modal-dialog modal-md" role="document">
                    <div className="modal-content">
                      <div className="modalPicContainer" >
                       <h3 className="headings title"><b>{anime.title}</b></h3>
-                       <img src={anime.cover_image} alt="main pic" />
+                       <img src={anime.image} alt="main pic" />
                        <div className="animeInfoContainer">
-                        <h4>Type: {anime.show_type}</h4>
+                        <h4>Type: {anime.type}</h4>
                          <h4>Status: {anime.status}</h4>
-                         <h4>Episodes: {anime.episode_count}</h4>
-                         <h4>Started: {anime.started_airing}</h4>
-                         <h4>Ended: {anime.finished_airing}</h4>
-                         <h4>Rating: {Math.round(anime.community_rating * 100)/100}</h4>
-                         <h4>Rated: {anime.age_rating}</h4>
-                         <h4>Summary: {anime.synopsis}</h4>
+                         <h4>Episodes: {anime.episodes}</h4>
+                         <h4>Started: {anime.started}</h4>
+                         <h4>Ended: {anime.finished}</h4>
+                         <h4>Rating: {Math.round(anime.rating * 100)/100}</h4>
+                         <h4>Rated: {anime.rated}</h4>
+                         <h4>Summary: {anime.summary}</h4>
                          <h4>Genres:</h4>
                          {
-                           anime.genres.map(genre => {
+                           JSON.parse(anime.genres).map(genre => {
                              return (
                                <h5 key ={uuid()}>{genre.name}</h5>
                              )
                            })
                          }
                        </div>
+                       <button onClick={this._deleteFavorite.bind(null, anime.animeId)} data-dismiss='modal'>Delete</button>
                      </div>
                     </div>
                   </div>

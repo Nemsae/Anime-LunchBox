@@ -31,20 +31,18 @@ export default class SearchTable extends Component {
   }
 
   _addFavorite (anime) {
-    // console.log('anime of _add: ', anime);
-    AnimeActions.sendFavorite(anime);
+    AnimeActions.addFavorite(anime);
   }
 
   _addToWatch (anime) {
-    // console.log('anime of _toWatch : ', anime);
-    AnimeActions.sendToWatch(anime);
+    AnimeActions.addToWatch(anime);
   }
 
   render () {
     let { animeResults } = this.state;
 
+    //  YOUTUBE
     var tag = document.createElement('script');
-
     tag.src = 'https://www.youtube.com/iframe_api';
     var firstScriptTag = document.getElementsByTagName('script')[0];
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
@@ -93,7 +91,6 @@ export default class SearchTable extends Component {
                       <div className='modalPicContainer' >
                         <h3 className='headings title'><b>{anime.title}</b></h3>
 
-                        {/* <div id='player'></div> */}
                         <iframe allowFullScreen='allowFullScreen' id='player' type='text/html' width='640' height='390'
                           src={`https://www.youtube.com/embed?listType=search&list=${anime.title} anime`}
                           frameBorder='0'></iframe>
