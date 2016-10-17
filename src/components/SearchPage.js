@@ -15,6 +15,7 @@ export default class SearchPage extends Component {
     let searchTerm = searchInput.value;
     AnimeActions.sendSearch(searchTerm);
     API.fetchStickers(searchTerm);
+    API.fetchBackground(searchTerm);
   }
 
   render () {

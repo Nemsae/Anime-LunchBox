@@ -74,16 +74,27 @@ const API = {
   },
 
   fetchStickers (searchTerm) {
-    console.log('searchTerm in API: ', searchTerm);
     axios.get(`http://api.giphy.com/v1/stickers/search?q=${searchTerm}&api_key=dc6zaTOxFJmzC`)
       .then((res) => {
-        console.log('res: ', res);
         ServerActions.receiveStickers(res.data.data);
       })
       .catch((err) => {
         console.log('ERROR! API.fetchStickers', err);
       });
+  },
+
+  fetchBackground (searchTerm) {
+    // axios.get(`http://api.giphy.com/v1/stickers/search?q=${searchTerm}&api_key=dc6zaTOxFJmzC`)
+    axios.get(`http://api.giphy.com/v1/gifs/search?q=${searchTerm}&api_key=dc6zaTOxFJmzC`)
+      .then((res) => {
+        console.log('res: ', res.data.data);
+        ServerActions.receiveBackground(res.data.data);
+      })
+      .catch((err) => {
+        console.log('ERROR! API.fetchStickers', err);
+      });
   }
+
 };
 
 export default API;

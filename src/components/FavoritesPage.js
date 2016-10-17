@@ -43,6 +43,9 @@ export default class FavoritesPage extends Component {
         <h1>Favorites</h1>
         {
           animeFavorites.map((anime) => {
+            let divStyle = {
+              backgroundImage: `url(${anime.image})`
+            };
             return (
               <div key={uuid()} className='encloser'>
                 <div>
@@ -54,8 +57,7 @@ export default class FavoritesPage extends Component {
                     <div className='modal-content thirdLevelModal'>
                       <div className='modalPicContainer fourthLevelModal' >
 
-                        <div className='playerContainer' >
-
+                        <div className='playerContainer' style={divStyle}>
                           <iframe allowFullScreen='allowFullScreen' id='player' type='text/html' width='640' height='390'
                             src={`https://www.youtube.com/embed?listType=search&list=${anime.title} anime`}
                             frameBorder='0'></iframe>

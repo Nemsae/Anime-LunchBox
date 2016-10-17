@@ -8,7 +8,8 @@ export default class SearchTable extends Component {
     super();
 
     this.state = {
-      animeResults: AnimeStore.getAnimeResults()
+      animeResults: AnimeStore.getAnimeResults(),
+      background: AnimeStore.getBackground()
     };
 
     this._onChange = this._onChange.bind(this);
@@ -26,7 +27,8 @@ export default class SearchTable extends Component {
 
   _onChange () {
     this.setState({
-      animeResults: AnimeStore.getAnimeResults()
+      animeResults: AnimeStore.getAnimeResults(),
+      background: AnimeStore.getBackground()
     });
   }
 
@@ -79,6 +81,12 @@ export default class SearchTable extends Component {
       <div className='compContainer'>
         {
           animeResults.map((anime) => {
+            let { background } = this.state;
+            let num = Math.floor(Math.random() * background.length);
+            let divStyle = {
+              backgroundImage: `url(${background[num].images.original.url})`
+              // backgroundImage: `url(${background[num].images.original_still.url})`
+            };
             return (
               <div key={anime.id} className='encloser'>
                 <div className='animeSquare'>
@@ -92,8 +100,7 @@ export default class SearchTable extends Component {
                     <div className='modal-content thirdLevelModal'>
                       <div className='modalPicContainer fourthLevelModal' >
 
-                        <div className='playerContainer' >
-
+                        <div className='playerContainer' style={divStyle}>
                           <iframe allowFullScreen='allowFullScreen' id='player' type='text/html' width='640' height='390'
                             src={`https://www.youtube.com/embed?listType=search&list=${anime.title} anime`}
                             frameBorder='0'></iframe>
@@ -103,7 +110,6 @@ export default class SearchTable extends Component {
                           <img src={anime.cover_image} alt='main pic' className='modalPic' />
                           <h3 className='headings title'><b>{anime.title}</b></h3>
                           <div className='sideImageInfo'>
-
                             <h4>Type: {anime.show_type}</h4>
                             <h4>Status: {anime.status}</h4>
                             <h4>Episodes: {anime.episode_count}</h4>

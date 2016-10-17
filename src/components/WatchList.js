@@ -44,6 +44,9 @@ export default class WatchList extends Component {
         <div>
           {
             watchList.map((anime) => {
+              let divStyle = {
+                backgroundImage: `url(${anime.image})`
+              };
               return (
                 <div key={anime.id} className='encloser'>
 
@@ -56,8 +59,7 @@ export default class WatchList extends Component {
                       <div className='modal-content thirdLevelModal'>
                         <div className='modalPicContainer fourthLevelModal' >
 
-                          <div className='playerContainer' >
-
+                          <div className='playerContainer' style={divStyle}>
                             <iframe allowFullScreen='allowFullScreen' id='player' type='text/html' width='640' height='390'
                               src={`https://www.youtube.com/embed?listType=search&list=${anime.title} anime`}
                               frameBorder='0'></iframe>

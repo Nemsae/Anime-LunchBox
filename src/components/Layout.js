@@ -35,10 +35,10 @@ export default class Layout extends Component {
         <div className='navbar navbar-inverse navbar-fixed-left'>
           <ul className='nav navbar-nav'>
             <li>Anime<br />LunchBox</li>
-            <li><Link to='/'>Home</Link><img src={stickers.home} /></li>
-            <li><Link to='/search'>Search</Link><img src={stickers.search} /></li>
-            <li><Link to='/favorites'>Favorites</Link><img src={stickers.favorites} /></li>
-            <li><Link to='/watchList'>WatchList</Link><img src={stickers.watchlist} /></li>
+            <li><Link className='link' to='/'>Home</Link><img className='linkImg' src={stickers.home} /></li>
+            <li><Link className='link' to='/search'>Search</Link><img className='linkImg' src={stickers.search} /></li>
+            <li><Link className='link' to='/favorites'>Favorites</Link><img className='linkImg' src={stickers.favorites} /></li>
+            <li><Link className='link' to='/watchList'>WatchList</Link><img className='linkImg' src={stickers.watchlist} /></li>
           </ul>
         </div>
         <div className='container'>

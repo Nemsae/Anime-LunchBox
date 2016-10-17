@@ -9,6 +9,7 @@ html {
   width:100%;
 }
 
+
 body {
   /*background-repeat: no-repeat;
   background-position: center center;
@@ -23,9 +24,15 @@ body {
   /*background-image: url('http://cdn.wallpapersafari.com/35/79/pfH1QU.png');*/
 }
 
+
+
 .navbar {
   background: transparent;
   border: none;
+}
+
+h1 {
+  margin-bottom: 1em;
 }
 
 img {
@@ -46,6 +53,11 @@ ul {
     height: 100%;
     overflow: auto;
     background:#2c3e50;
+
+}
+
+::-webkit-scrollbar {
+    display: none;
 }
 
 li {
@@ -92,6 +104,12 @@ a {
 .encloser img {
    animation:fade 5s 1;
 }
+
+ .encloser img:hover {
+  transform: scale(1.3);
+  transition: all 1s ease;
+}
+
 
 .searchContainer {
   width:75%;
@@ -245,6 +263,42 @@ form {
   margin-bottom:2em;
 }
 
+.linkImg {
+  height:6em;
+  width:70%;
+  margin: auto;
+}
+
+ul > li  {
+  position: relative;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: #9d9d9d;
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 50%;
+    top: 50%;
+    width:50%;
+    line-height:1em;
+    margin: auto;
+    background:rgba(0, 0, 0, .4);
+    line-height: 0.5em;
+    height:1.5em;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover {
+  background:black;
+  color:white;
+}
+
+.homeWallPaper {
+
+}
+
+
+
 
 
 /*#navBarContainer {
@@ -321,46 +375,47 @@ div {
 
 
 
-/*@-webkit-keyframes wallpaper {
+@-webkit-keyframes wallpaper {
   0% {
-    background-image: url('../../images/1.jpg');
-  }*/
-  /*10% {
-    background-image: url('../images/2.jpg');
+    background: url('https://images2.alphacoders.com/459/thumb-1920-459572.png');
+  }
+  15% {
+    background: url('https://images6.alphacoders.com/656/thumb-1920-656029.png');
 
   }
-  20% {
-    background-image: url('../images/3.jpg');
-
-  }
-  30% {
-    background-image: url('../images/4.jpg');
+  25% {
+    background: url('https://images5.alphacoders.com/658/thumb-1920-658649.jpg');
 
   }
   40% {
-    background-image: url('../images/5.jpg');
+    background: url('https://images7.alphacoders.com/678/thumb-1920-678796.jpg');
 
   }
-  50% {
-    background-image: url('../images/6.jpg');
-    }
-  60% {
-    background-image: url('../images/7.jpg');
-    }
+  55% {
+    background: url('https://images8.alphacoders.com/458/thumb-1920-458533.jpg');
+
+  }
   70% {
-    background-image: url('../images/8.jpg');
-
+    background: url('https://images8.alphacoders.com/392/thumb-1920-392913.jpg');
+    }
+  80% {
+    background: url('https://images5.alphacoders.com/673/thumb-1920-673558.jpg');
+    }
+  90% {
+    background: url('https://images3.alphacoders.com/192/thumb-1920-192697.jpg');
   }
-  80%{
-    background-image: url('../images/9.jpg');
+}
 
-  }
-  90%{
-    background-image: url('../images/10.jpg');
+.homeWallPaper {
+  background: url('https://media.giphy.com/media/DbN8zWxKR0J20/giphy.gif');
+  background-size: cover;
+  background-position: center center;
+  animation: wallpaper 20s infinite;
+  height: 100vh;
+  width: 76vw;
+  position: absolute;
+  z-index: -1;
+  right: 0;
+  top: 0;
 
-  }
-  100%{
-    background-image: url('../images/11.jpg');
-
-  }*/
-/*}*/
+}

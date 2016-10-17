@@ -4,7 +4,8 @@ import AppDispatcher from '../AppDispatcher';
 let _animeResults = [];
 let _favorites = [];
 let _watchList = [];
-let _stickers = {home: 'https://slack-imgs.com/?c=1&url=https%3A%2F%2Fmedia.giphy.com%2Fmedia%2FkuWN0iF9BLQKk%2Fgiphy.gif', search: 'https://media.giphy.com/media/125lsnMftnEBBC/giphy.gif', favorites: 'https://media.giphy.com/media/SVacpp6YPRtTO/giphy.gif', watchlist: 'https://media.giphy.com/media/KG5hDHiZVEmZO/giphy.gif'};
+let _stickers = {home: 'https://slack-imgs.com/?c=1&url=https%3A%2F%2Fmedia.giphy.com%2Fmedia%2FkuWN0iF9BLQKk%2Fgiphy.gif', search: 'https://media.giphy.com/media/Is54ejaz7HiZW/giphy.gif', favorites: 'https://media.giphy.com/media/SVacpp6YPRtTO/giphy.gif', watchlist: 'https://media.giphy.com/media/KG5hDHiZVEmZO/giphy.gif'};
+let _backgroundImage = '';
 
 class AnimeStore extends EventEmitter {
   constructor () {
@@ -31,13 +32,14 @@ class AnimeStore extends EventEmitter {
           let { stickers } = action.payload;
           console.log('stickers in store: ', stickers);
           _stickers.home = stickers[0] ? stickers[0].images.downsized.url : 'https://slack-imgs.com/?c=1&url=https%3A%2F%2Fmedia.giphy.com%2Fmedia%2FkuWN0iF9BLQKk%2Fgiphy.gif';
-          _stickers.search = stickers[1] ? stickers[1].images.downsized.url : 'https://media.giphy.com/media/125lsnMftnEBBC/giphy.gif';
+          _stickers.search = stickers[1] ? stickers[1].images.downsized.url : 'https://media.giphy.com/media/Is54ejaz7HiZW/giphy.gif';
           _stickers.favorites = stickers[2] ? stickers[2].images.downsized.url : 'https://media.giphy.com/media/SVacpp6YPRtTO/giphy.gif';
           _stickers.watchlist = stickers[3] ? stickers[3].images.downsized.url : 'https://media.giphy.com/media/KG5hDHiZVEmZO/giphy.gif';
-          // _stickers.home = stickers[0].images.downsized.url;
-          // _stickers.search = stickers[1].images.downsized.url;
-          // _stickers.favorites = stickers[2].images.downsized.url;
-          // _stickers.watchlist = stickers[3].images.downsized.url;
+          this.emit('CHANGE');
+        } break;
+        case 'RECEIVE_BACKGROUND': {
+          let { bgImage } = action.payload;
+          _backgroundImage = bgImage;
           this.emit('CHANGE');
         } break;
       }
@@ -66,6 +68,10 @@ class AnimeStore extends EventEmitter {
 
   getStickers () {
     return _stickers;
+  }
+
+  getBackground () {
+    return _backgroundImage;
   }
 }
 

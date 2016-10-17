@@ -27,6 +27,13 @@ const ServerActions = {
       type: 'RECEIVE_STICKERS',
       payload: { stickers }
     });
+  },
+
+  receiveBackground (bgImage) {
+    AppDispatcher.dispatch({
+      type: 'RECEIVE_BACKGROUND',
+      payload: { bgImage }
+    });
   }
 };
 export default ServerActions;
