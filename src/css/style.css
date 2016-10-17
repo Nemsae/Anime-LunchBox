@@ -267,6 +267,7 @@ form {
   height:6em;
   width:70%;
   margin: auto;
+  box-shadow: none;
 }
 
 ul > li  {
@@ -280,7 +281,7 @@ ul > li  {
     left: 0;
     bottom: 50%;
     top: 50%;
-    width:50%;
+    width:70%;
     line-height:1em;
     margin: auto;
     background:rgba(0, 0, 0, .4);
