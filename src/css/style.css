@@ -23,9 +23,14 @@ body {
   /*background-image: url('http://cdn.wallpapersafari.com/35/79/pfH1QU.png');*/
 }
 
+.navbar {
+  background: transparent;
+  border: none;
+}
+
 img {
-  max-height:15em;
-  max-width:10em;
+  max-height:18em;
+  max-width:13em;
   box-shadow: 0 0 25px blue,
               0 0 2px black;
 }
@@ -40,7 +45,7 @@ ul {
     position: fixed;
     height: 100%;
     overflow: auto;
-    background:skyblue;
+    background:#2c3e50;
 }
 
 li {
@@ -48,6 +53,11 @@ li {
   font-size: 2em;
   margin:1em auto;
   width:100%;
+  color:white;
+}
+
+a {
+  color:white !important;
 }
 
 .compContainer {
@@ -58,11 +68,29 @@ li {
   text-align: center;
 }
 
+@keyframes fade {
+  0% {
+    opacity: 0;
+    width:0em;
+  }
+
+
+  100% {
+    opacity: 1;
+    width:12em;
+  }
+}
+
 .encloser {
   display: inline-block;
   width:30%;
   height:24em;
   vertical-align: text-top;
+
+}
+
+.encloser img {
+   animation:fade 5s 1;
 }
 
 .searchContainer {
@@ -82,6 +110,142 @@ li {
   text-align: center;
   background-blend-mode:difference;
 }
+
+
+.firstLevelModal {
+  margin:0 auto;
+  padding:0 !important;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+}
+
+.secondLevelModal {
+  margin:2%;
+  position: relative;
+  overflow:hidden;
+  margin: auto;
+  top: 3%;
+  width: 95%;
+  height: 95%;
+}
+
+.thirdLevelModal {
+  height:100%;
+}
+
+.playerContainer {
+  width:51%;
+  height: 100%;
+  right:0;
+  position: absolute;
+  top:0;
+  background-image: url('http://cdn.playbuzz.com/cdn/011dbdf6-83a4-490c-a669-a1044e72f632/fed3ba3f-7686-4447-afd9-51127291f911.jpg');
+  background-position: top;
+  background-size: 20em;
+}
+
+
+#player {
+  position: absolute;
+  right:0;
+  left:0;
+  margin:auto;
+  top:25%;
+  width:90%;
+}
+
+.animeInfoContainer {
+  color:#ecf0f1;
+  position: absolute;
+  width:50%;
+  padding:3%;
+  background:#44595e;
+  height:100%;
+}
+
+.modalPic {
+  float:left;
+}
+
+.modalPicContainer {
+  height: 100%;
+}
+
+.title {
+  margin-top: 0;
+  margin-bottom: 1em;
+  text-align:left;
+  margin-left: 8em;
+}
+
+.sideImageInfo h4 {
+  text-align: left;
+  letter-spacing: 2px;
+}
+
+.summary {
+  float:left;
+  margin:3.5em auto 0;
+  line-height: 1.4em;
+  text-align: justify;
+}
+
+.sideImageInfo {
+  width: 28em;
+  margin-left:14em;
+  text-align: left;
+}
+
+
+.btnContainer {
+  position: absolute;
+  bottom:4em;
+  right:0;
+  left:0;
+  margin:auto;
+}
+
+h5 {
+  display:inline;
+  margin: 0.5em 0.3em;
+}
+
+.genreContainer {
+  text-align: left;
+  position: absolute;
+  top:21.8em;
+}
+
+.genreContainer h4 {
+  display: inline;
+}
+
+button {
+  margin: 0 1em;
+  font-size:2em;
+  z-index: 100000;
+}
+
+.delBtn {
+  position: absolute;
+  bottom:2em;
+  margin:auto;
+  color:black;
+  left: 25%;
+  right:25%;
+}
+
+.form-control {
+  margin:  2em auto;
+  width:50%;
+}
+
+form {
+  margin-bottom:2em;
+}
+
+
 
 /*#navBarContainer {
   display: inline-block;

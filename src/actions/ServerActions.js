@@ -20,6 +20,13 @@ const ServerActions = {
       type: 'RECEIVE_WATCHLIST',
       payload: {watchList}
     });
+  },
+
+  receiveStickers (stickers) {
+    AppDispatcher.dispatch({
+      type: 'RECEIVE_STICKERS',
+      payload: { stickers }
+    });
   }
 };
 export default ServerActions;

@@ -69,7 +69,19 @@ const API = {
         API.fetchWatchList();
       })
       .catch((err) => {
-        console.log('ERROR! API.deleteFavorite', err);
+        console.log('ERROR! API.deleteToWatch', err);
+      });
+  },
+
+  fetchStickers (searchTerm) {
+    console.log('searchTerm in API: ', searchTerm);
+    axios.get(`http://api.giphy.com/v1/stickers/search?q=${searchTerm}&api_key=dc6zaTOxFJmzC`)
+      .then((res) => {
+        console.log('res: ', res);
+        ServerActions.receiveStickers(res.data.data);
+      })
+      .catch((err) => {
+        console.log('ERROR! API.fetchStickers', err);
       });
   }
 };

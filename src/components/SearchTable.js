@@ -76,37 +76,44 @@ export default class SearchTable extends Component {
     }
 
     return (
-      <div className="compContainer">
+      <div className='compContainer'>
         {
           animeResults.map((anime) => {
             return (
-              <div key={anime.id} className="encloser">
+              <div key={anime.id} className='encloser'>
                 <div className='animeSquare'>
-                <div className="picContainer">
-                  <img src={anime.cover_image} className="pic" data-toggle='modal' data-target={`.bs-example-modal-md${anime.id}`} />
+                  <div className='picContainer'>
+                    <img src={anime.cover_image} className='pic' data-toggle='modal' data-target={`.bs-example-modal-md${anime.id}`} />
+                  </div>
+                  <h4>{anime.title}</h4>
                 </div>
-                <h4>{anime.title}</h4>
-                </div>
-                <div className={`modal fade bs-example-modal-md${anime.id}`} tabIndex='-1' role='dialog' aria-labelledby='mySmallModalLabel'>
-                  <div className='modal-dialog modal-md' role='document'>
-                    <div className='modal-content'>
-                      <div className='modalPicContainer' >
-                        <h3 className='headings title'><b>{anime.title}</b></h3>
+                <div className={`modal fade bs-example-modal-md${anime.id} firstLevelModal`} tabIndex='-1' role='dialog' aria-labelledby='mySmallModalLabel'>
+                  <div className='modal-dialog modal-md secondLevelModal' role='document'>
+                    <div className='modal-content thirdLevelModal'>
+                      <div className='modalPicContainer fourthLevelModal' >
 
-                        <iframe allowFullScreen='allowFullScreen' id='player' type='text/html' width='640' height='390'
-                          src={`https://www.youtube.com/embed?listType=search&list=${anime.title} anime`}
-                          frameBorder='0'></iframe>
+                        <div className='playerContainer' >
 
-                        <img src={anime.cover_image} alt='main pic' />
+                          <iframe allowFullScreen='allowFullScreen' id='player' type='text/html' width='640' height='390'
+                            src={`https://www.youtube.com/embed?listType=search&list=${anime.title} anime`}
+                            frameBorder='0'></iframe>
+                        </div>
+
                         <div className='animeInfoContainer'>
-                          <h4>Status: {anime.status}</h4>
-                          <h4>Episodes: {anime.episode_count}</h4>
-                          <h4>Summary: {anime.synopsis}</h4>
-                          <h4>Type: {anime.show_type}</h4>
-                          <h4>Aired: {anime.started_airing} - {anime.finished_airing}</h4>
-                          <h4>Rating: {Math.round(anime.community_rating * 100) / 100}</h4>
-                          <h4>Rated: {anime.age_rating}</h4>
-                          <h4>Genres:</h4>
+                          <img src={anime.cover_image} alt='main pic' className='modalPic' />
+                          <h3 className='headings title'><b>{anime.title}</b></h3>
+                          <div className='sideImageInfo'>
+
+                            <h4>Type: {anime.show_type}</h4>
+                            <h4>Status: {anime.status}</h4>
+                            <h4>Episodes: {anime.episode_count}</h4>
+                            <h4>Rating: {Math.round(anime.community_rating * 100) / 100}</h4>
+                            <h4>Rated: {anime.age_rating}</h4>
+                            <h4>Aired: {anime.started_airing} - {anime.finished_airing}</h4>
+                          </div>
+                          <h4 className='summary'>Summary: {anime.synopsis}</h4>
+                          <div className='genreContainer'>
+                            <h4>Genres:</h4>
                           {
                             anime.genres.map((genre) => {
                               return (
@@ -114,10 +121,12 @@ export default class SearchTable extends Component {
                               );
                             })
                           }
+                          </div>
                         </div>
-
-                        <button onClick={this._addFavorite.bind(null, anime)}>Add to Favorites</button>
-                        <button onClick={this._addToWatch.bind(null, anime)}>Add to WatchList</button>
+                        <div className='btnContainer'>
+                          <button className='btn btn-primary' onClick={this._addFavorite.bind(null, anime)}>Add to Favorites</button>
+                          <button className='btn btn-success' onClick={this._addToWatch.bind(null, anime)}>Add to WatchList</button>
+                        </div>
 
                       </div>
                     </div>

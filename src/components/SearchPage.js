@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import AnimeActions from '../actions/AnimeActions';
 import SearchTable from './SearchTable';
+import API from '../API';
 
 export default class SearchPage extends Component {
   constructor () {
@@ -13,15 +14,16 @@ export default class SearchPage extends Component {
     let {searchInput} = this.refs;
     let searchTerm = searchInput.value;
     AnimeActions.sendSearch(searchTerm);
+    API.fetchStickers(searchTerm);
   }
 
   render () {
     return (
-      <div className="componentContainer">
+      <div className='componentContainer'>
         <h1>Search Anime</h1>
         <form onSubmit={this.submitSearch} >
           <input ref='searchInput' type='text' className='form-control searchBar' />
-          <button className="btn btn-primary">Search</button>
+          <button className='btn btn-primary' >Search</button>
         </form>
         <SearchTable />
       </div>

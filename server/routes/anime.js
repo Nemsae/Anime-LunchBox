@@ -48,26 +48,5 @@ router.route('/favorites')
       res.status(err ? 400 : 200).send(err || undeletedFavorites);
     });
   });
-  // .post((req, res) => {
-  //   AnimeModel.saveTweet(req.body, (err, savedTweets) => {
-  //     res.status(err ? 400 : 200).send(err || savedTweets);
-  //   });
-  // });
-
-// router.route('/:keyWords')
-//   .get((req, res) => {
-//     let keyWords = req.params.keyWords;
-//     AnimeModel.getTweets(keyWords, (err, tweets) => {
-//       res.status(err ? 400 : 200).send(err || tweets);
-//     })
-//   });
-
-// router.route('/save/:id')
-//   .delete((req, res) => {
-//     let id = req.params.id;
-//     AnimeModel.deleteTweet(id, (err, undeletedTweets) => {
-//       res.status(err ? 400 : 200).send(err || undeletedTweets);
-//     })
-//   });
 
 module.exports = router;
