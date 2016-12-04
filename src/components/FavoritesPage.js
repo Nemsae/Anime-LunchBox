@@ -60,7 +60,7 @@ export default class FavoritesPage extends Component {
                         <div className='playerContainer' style={divStyle}>
                           <iframe allowFullScreen='allowFullScreen' id='player' type='text/html' width='640' height='390'
                             src={`https://www.youtube.com/embed?listType=search&list=${anime.title} anime`}
-                            frameBorder='0'></iframe>
+                            frameBorder='0' />
                         </div>
 
                         <div className='animeInfoContainer'>
@@ -78,13 +78,13 @@ export default class FavoritesPage extends Component {
                           <h4 className='summary'>Summary: {anime.summary}</h4>
                           <div className='genreContainer'>
                             <h4>Genres:</h4>
-                          {
-                            JSON.parse(anime.genres).map((genre) => {
-                              return (
-                                <h5 key={uuid()}>{genre.name}</h5>
-                              );
-                            })
-                          }
+                            {
+                              JSON.parse(anime.genres).map((genre) => {
+                                return (
+                                  <h5 key={uuid()}>{genre.name}</h5>
+                                );
+                              })
+                            }
                           </div>
                         </div>
                         <button className='delBtn btn btn-danger' onClick={this._deleteFavorite.bind(null, anime.animeId)} data-dismiss='modal'>Delete</button>

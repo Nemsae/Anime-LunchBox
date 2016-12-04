@@ -35,6 +35,7 @@ export default class Layout extends Component {
         <div className='navbar navbar-inverse navbar-fixed-left'>
           <ul className='nav navbar-nav'>
             <li>Anime<br />LunchBox</li>
+            <li><Link className='link' to='/'>Login</Link><img className='linkImg' src={stickers.home} /></li>
             <li><Link className='link' to='/'>Home</Link><img className='linkImg' src={stickers.home} /></li>
             <li><Link className='link' to='/search'>Search</Link><img className='linkImg' src={stickers.search} /></li>
             <li><Link className='link' to='/favorites'>Favorites</Link><img className='linkImg' src={stickers.favorites} /></li>
