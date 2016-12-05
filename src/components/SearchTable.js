@@ -16,7 +16,6 @@ export default class SearchTable extends Component {
 
     this._onChange = this._onChange.bind(this);
     this.setCurrAnime = this.setCurrAnime.bind(this);
-
   }
 
   componentWillMount () {
