@@ -49,7 +49,7 @@ export default class SearchTable extends Component {
           animeResults.map((anime) => {
             return (
               <div key={anime.id} className='encloser' onClick={() => this.setCurrAnime(anime)} data-toggle='modal' data-target={`.bs-example-modal-md${anime.id}`}>
-                <div className='animeSquare'>
+                <div className='animeSquare' >
                   <div className='picContainer'>
                     <img  src={anime.cover_image} className='pic'/>
                   </div>
