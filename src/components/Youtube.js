@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default function Youtube () {
+export default function Youtube() {
   var tag = document.createElement('script');
   tag.src = 'https://www.youtube.com/iframe_api';
   var firstScriptTag = document.getElementsByTagName('script')[0];
