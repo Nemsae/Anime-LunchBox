@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import AnimeStore from '../stores/AnimeStore';
+import NavBar from './NavBar';
+// import SignInModal from './SignInModal';
+
 
 export default class Layout extends Component {
   constructor () {
@@ -27,27 +30,17 @@ export default class Layout extends Component {
     });
   }
   render () {
+
     let { stickers } = this.state;
-    console.log('stickers in component: ', stickers);
 
     return (
       <div className='mainContainer'>
-        <div className='navbar navbar-inverse navbar-fixed-left'>
-          <ul className='nav navbar-nav'>
-            <li>Anime<br />LunchBox</li>
-            <li><Link className='link' to='/'>Home</Link><img className='linkImg' src={stickers.home} /></li>
-            <li><Link className='link' to='/login'>Login</Link><img className='linkImg' src={stickers.home} /></li>
-            <li><Link className='link' to='/search'>Search</Link><img className='linkImg' src={stickers.search} /></li>
-            <li><Link className='link' to='/favorites'>Favorites</Link><img className='linkImg' src={stickers.favorites} /></li>
-            <li><Link className='link' to='/watchList'>WatchList</Link><img className='linkImg' src={stickers.watchlist} /></li>
-          </ul>
+        <div>
+          <NavBar />
         </div>
-        <div className='container'>
-          <div>
-            <div className='pageContainer'>
-            {this.props.children}
-            </div>
-          </div>
+        <div className='pageContainer'>
+          {/* <SignInModal /> */}
+          {this.props.children}
         </div>
 
       </div>

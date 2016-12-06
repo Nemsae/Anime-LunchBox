@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
 import { AuthActions, signInWithGoogle, signOut } from '../actions/AuthActions';
-console.log('AuthActions: ', AuthActions);
+// console.log('AuthActions: ', AuthActions);
 import ServerActions from '../actions/ServerActions';
-console.log('ServerActions: ', ServerActions);
+// console.log('ServerActions: ', ServerActions);
 import AuthStore from '../stores/AuthStore';
 
 export default class Login extends Component {
@@ -12,7 +12,7 @@ export default class Login extends Component {
 
     this.state = {
       userStatus: AuthStore.getUserStatus(),
-      errorStatus: AuthStore.getErrorStatus()
+      errorStatus: AuthStore.getErrorStatus(),
     };
 
     this._onChange = this._onChange.bind(this);
@@ -46,14 +46,17 @@ export default class Login extends Component {
   render () {
     let { userStatus, errorStatus } = this.state;
     console.log('userStatus: ', userStatus);
-    console.log('errorStatus: ', errorStatus);
+    // console.log('errorStatus: ', errorStatus);
     return (
-      <div>
-        <h1>Login</h1>
-        { userStatus.authenticated ?
-          <button onClick={this._signOut}>Sign Out</button> :
-          <button onClick={this._googleSignIn}>Google Sign In</button>
-        }
+      <div className='loginModalContainer'>
+        <div className ='loginModal'>
+          {/* <div className='modalContent'></div> */}
+          { userStatus.authenticated ?
+            <button onClick={this._signOut}>Sign Out</button> :
+            <button onClick={this._googleSignIn}>Google Sign In</button>
+          }
+        </div>
+
       </div>
     );
   }

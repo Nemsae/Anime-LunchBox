@@ -4,8 +4,8 @@ import { firebaseAuth } from '../firebase';
 
 export function signInWithGoogle () {
   const provider = new firebase.auth.GoogleAuthProvider();
-  console.log('provider: ', provider);
-  console.log('authenticate: ', authenticate);
+  // console.log('provider: ', provider);
+  // console.log('authenticate: ', authenticate);
   return authenticate(provider);
 }
 
@@ -13,8 +13,8 @@ function authenticate (provider) {
   // return (dispatch) => {
     firebaseAuth.signInWithPopup(provider)
       .then((result) => {
-        console.log('result: ', result);
-        console.log('AuthActions: ', AuthActions);
+        // console.log('result: ', result);
+        // console.log('AuthActions: ', AuthActions);
         AuthActions.signInSuccess(result);
       })
       .catch((err) => AuthActions.signInError(err));
@@ -22,10 +22,11 @@ function authenticate (provider) {
 }
 
 export function signOut () {
-  return (dispatch) => {
+  // return (dispatch) => {
+    console.log('sign out clicked');
     firebaseAuth.signOut()
       .then(() => AuthActions.signOutSuccess());
-  };
+  // };
 }
 
 export function initAuth (dispatch) {
@@ -39,9 +40,9 @@ export function initAuth (dispatch) {
         resolve();
       },
       (error) => {
-        // dispatch(initAuthError(error));
-        // reject(error);
-        resolve();
+        dispatch(initAuthError(error));
+        reject(error);
+        // resolve();
       });
   });
 }
@@ -62,7 +63,7 @@ export const AuthActions = {
   },
 
   signInSuccess (result) {
-    console.log('result2222: ', result);
+    // console.log('result2222: ', result);
     AppDispatcher.dispatch({
       type: 'SIGN_IN_SUCCESS',
       payload: result.user
