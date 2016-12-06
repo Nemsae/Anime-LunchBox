@@ -9,6 +9,10 @@ html {
   width:100%;
 }
 
+#myModal {
+  display: none;
+}
+
 
 body {
   /*background-repeat: no-repeat;

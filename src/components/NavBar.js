@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import AnimeStore from '../stores/AnimeStore';
-import Login from './Login';
+import SignIn from './SignIn';
 
 export default class NavBar extends Component {
   constructor () {
@@ -30,23 +30,22 @@ export default class NavBar extends Component {
     });
   }
 
-  _toggleModal() {
-      this.setState({
-        modal: !this.state.modal,
-      });
-  }
+  // _toggleModal() {
+  //     this.setState({
+  //       modal: !this.state.modal,
+  //     });
+  // }
 
   render () {
     let { stickers, modal, loggedIn } = this.state;
 
     return (
       <div>
-
         {loggedIn ? <div className='navbar navbar-inverse navbar-fixed-left'>
           <ul className='nav navbar-nav'>
             <li>Anime<br />LunchBox</li>
             <li><Link className='link' to='/'>Home</Link><img className='linkImg' src={stickers.home} /></li>
-            <li onClick={this._toggleModal}><a className='link' >SignOut</a><img className='linkImg' src={stickers.home} /></li>
+            {/* <li onClick={this._toggleModal}><a className='link' >SignOut</a><img className='linkImg' src={stickers.home} /></li> */}
             <li><Link className='link' to='/search'>Search</Link><img className='linkImg' src={stickers.search} /></li>
             <li><Link className='link' to='/favorites'>Favorites</Link><img className='linkImg' src={stickers.favorites} /></li>
             <li><Link className='link' to='/watchList'>WatchList</Link><img className='linkImg' src={stickers.watchlist} /></li>
@@ -57,12 +56,12 @@ export default class NavBar extends Component {
             <ul className='nav navbar-nav'>
               <li>Anime<br />LunchBox</li>
               <li><Link className='link' to='/'>Home</Link><img className='linkImg' src={stickers.home} /></li>
-              <li onClick={this._toggleModal}><a className='link' >Login</a><img className='linkImg' src={stickers.home} /></li>
+              {/* <li onClick={this._toggleModal}><a className='link' >Login</a><img className='linkImg' src={stickers.home} /></li> */}
               <li><Link className='link' to='/search'>Search</Link><img className='linkImg' src={stickers.search} /></li>
             </ul>
           </div>
         }
-        <Login />
+        <SignIn />
           </div>
 
     );

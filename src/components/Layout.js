@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import AnimeStore from '../stores/AnimeStore';
 import NavBar from './NavBar';
-// import SignInModal from './SignInModal';
 
 
 export default class Layout extends Component {
@@ -29,6 +28,7 @@ export default class Layout extends Component {
       stickers: AnimeStore.getStickers()
     });
   }
+
   render () {
 
     let { stickers } = this.state;
@@ -38,11 +38,7 @@ export default class Layout extends Component {
         <div>
           <NavBar />
         </div>
-        <div className='pageContainer'>
-          {/* <SignInModal /> */}
-          {this.props.children}
-        </div>
-
+        {this.props.children}
       </div>
     );
   }

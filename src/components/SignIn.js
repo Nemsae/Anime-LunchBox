@@ -5,8 +5,9 @@ import { AuthActions, signInWithGoogle, signOut } from '../actions/AuthActions';
 import ServerActions from '../actions/ServerActions';
 // console.log('ServerActions: ', ServerActions);
 import AuthStore from '../stores/AuthStore';
+import SignInModal from './SignInModal';
 
-export default class Login extends Component {
+export default class SignIn extends Component {
   constructor () {
     super();
 
@@ -48,12 +49,13 @@ export default class Login extends Component {
     console.log('userStatus: ', userStatus);
     // console.log('errorStatus: ', errorStatus);
     return (
-      <div className='loginModalContainer'>
-        <div className ='loginModal'>
+      <div className='SignInContainer'>
+        <SignInModal />
+        <div className =''>
           {/* <div className='modalContent'></div> */}
           { userStatus.authenticated ?
             <button onClick={this._signOut}>Sign Out</button> :
-            <button onClick={this._googleSignIn}>Google Sign In</button>
+            <button data-toggle="modal" data-target="#myModal">Sign In</button>
           }
         </div>
 
