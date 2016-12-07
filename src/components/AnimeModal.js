@@ -25,23 +25,23 @@ export default class AnimeModal extends Component {
       backgroundImage: background.length && `url(${background[num].images.original.url})`
     };
     return (
-      <div className={`modal fade bs-example-modal-md${anime.id} firstLevelModal`} tabIndex='-1' role='dialog' aria-labelledby='mySmallModalLabel'>
+      <div className={`modal fade bs-example-modal-md${anime.id} firstLevelModal`} id="animeModalMain" tabIndex='-1' role='dialog' aria-labelledby='mySmallModalLabel'>
         <div className='modal-dialog modal-md secondLevelModal' role='document'>
           <div className='modal-content thirdLevelModal'>
             <div className='modalPicContainer fourthLevelModal' >
 
-              <div className='playerContainer'
-                style={divStyle}
-              >
-                <iframe allowFullScreen='allowFullScreen' id='player' type='text/html' width='640' height='390'
-                  src={`https://www.youtube.com/embed?listType=search&list=${anime.title} anime`}
-                  frameBorder='0'></iframe>
-              </div>
 
               <div className='animeInfoContainer'>
-                <img src={anime.cover_image} alt='main pic' className='modalPic' />
-                <h3 className='headings title'><b>{anime.title}</b></h3>
-                <div className='sideImageInfo'>
+                <h5 className="animeModalClose" data-dismiss="modal" target="firstLevelModal">X</h5>
+                <div className='animeTitle text-center'>
+                  <img src={anime.cover_image} alt='main pic' className='modalPic' />
+                  <h3 className='headings title'><b>{anime.title}</b></h3>
+                </div>
+                <div className='btnContainer text-center'>
+                  <button className='btn btn-primary' onClick={this._addFavorite.bind(null, anime)}>Add to Favorites</button>
+                  <button className='btn btn-success' onClick={this._addToWatch.bind(null, anime)}>Add to WatchList</button>
+                </div>
+                <div className='animeInfo'>
                   <h4>Type: {anime.show_type}</h4>
                   <h4>Status: {anime.status}</h4>
                   <h4>Episodes: {anime.episode_count}</h4>
@@ -61,10 +61,16 @@ export default class AnimeModal extends Component {
                   }
                 </div>
               </div>
-              <div className='btnContainer'>
-                <button className='btn btn-primary' onClick={this._addFavorite.bind(null, anime)}>Add to Favorites</button>
-                <button className='btn btn-success' onClick={this._addToWatch.bind(null, anime)}>Add to WatchList</button>
+
+              <div className='playerContainer'
+                style={divStyle}
+              >
+                <iframe allowFullScreen='allowFullScreen' id='player' type='text/html' width='640' height='390'
+                  src={`https://www.youtube.com/embed?listType=search&list=${anime.title} anime`}
+                  frameBorder='0'></iframe>
               </div>
+
+
             </div>
           </div>
         </div>

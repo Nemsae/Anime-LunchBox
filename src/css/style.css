@@ -2,6 +2,9 @@ body, html, #root, .layoutContainer {
   height: 100%;
   width:100%;
   overflow: hidden;
+  background-image: url('https://i.ytimg.com/vi/FAx59Q58qRY/maxresdefault.jpg');
+  background-position: center;
+  background-size: cover;
 }
 
 /*Mobile First Approach*/
@@ -12,6 +15,15 @@ img {
 
 h1 {
   text-align: center;
+  font-size: 170%;
+  color:white;
+}
+
+div.animeSquare h4 {
+  text-align: center;
+  color:white;
+  background: rgba(0,0,0,.5);
+  margin:0;
 }
 
 .hamtitleContainer {
@@ -58,6 +70,10 @@ a.link {
   overflow: auto;
   display: flex;
   flex-direction: column;
+}
+
+.form-control.searchBar {
+  margin: 1em auto;
 }
 
 /*SignIn Modal*/
@@ -107,6 +123,58 @@ form {
   max-width: 18em;
 }
 
+
+/*AnimeModal*/
+#animeModalMain {
+  display: flex !important;
+  justify-content: center;
+}
+
+.modalPicContainer {
+  padding:1em;
+}
+
+.modalPic {
+  width: 50%;
+}
+
+h3.headings.title {
+  display: block;
+}
+
+.animeInfoContainer {
+  display: flex;
+  flex-direction: column ;
+  align-items: center;
+
+}
+
+.animeInfo {
+  display: flex;
+  align-self: flex-start;
+  flex-direction: column;
+}
+
+.animeModalClose {
+  position: absolute;
+  top:-1em;
+  right:0;
+  color:white;
+  display: inline-block;
+  font-size:150%;
+  padding:1em;
+}
+
+.playerContainer {
+  display: flex;
+}
+
+#player {
+  width: 100%;
+}
+
+
+/*animeSquares*/
 .compContainer {
   display: flex;
   flex-flow: row wrap;
@@ -120,9 +188,14 @@ form {
 }
 
 @media screen and (min-width: 768px) {
+h1 {
+  margin-top: 2em;
+}
+
   .layoutContainer {
     flex-direction: row;
   }
+
 
   .navbarContainer {
     height:100%;
