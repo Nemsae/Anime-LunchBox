@@ -6,10 +6,11 @@ import React, { Component } from 'react';
 // console.log('ServerActions: ', ServerActions);
 // import AuthStore from '../stores/AuthStore';
 
-export default function SignInModal () {
+export default function SignInModal (props) {
     // let { userStatus, errorStatus } = this.state;
     // console.log('userStatus: ', userStatus);
     // console.log('errorStatus: ', errorStatus);
+  let googleSignIn = props.signIn;
     return (
       <div className="modal fade" id="myModal" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div className="modal-dialog" role="document">
@@ -27,7 +28,7 @@ export default function SignInModal () {
                 <label htmlFor="password">Password</label>
                 <input name="password" className="form-control" type="password" label="Password"/>
 
-                <div className='loginContainer'>
+                <div className='loginContainer text-center'>
                   <button action='submit' className=" btn signBtn">Sign In</button>
                   <button className=" btn signBtn">Sign Up</button>
                 </div>
@@ -37,7 +38,7 @@ export default function SignInModal () {
               <div className="googleSignContainer text-center">
                 <button
                   className="signBtn btn googleSignBtn"
-                  // onClick={this.googleSignIn}
+                  onClick={googleSignIn}
                 >
                   <h5 className="signInText">Sign in with Google</h5>
                 </button>

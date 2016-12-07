@@ -26,14 +26,18 @@ app.use(require('webpack-hot-middleware')(compiler));
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use('/static', express.static('/build'));
+app.use('/static', express.static('../build'));
 
 //  ROUTES
 app.use('/api', require('./routes/api'));
 
-app.get('*', (req, res) => {
-  let indexPath = path.join(__dirname, '../build/index.html');
-  res.sendFile(indexPath);
+// app.get('*', (req, res) => {
+//   let indexPath = path.join(__dirname, '../build/index.html');
+//   res.sendFile(indexPath);
+// });
+
+app.use('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../public/index.html'));
 });
 //  SERVER LISTEN
 server.listen(PORT, (err) => {

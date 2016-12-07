@@ -79,6 +79,28 @@ a.link {
 
 .googleSignBtn {
   background-image: url('/assets/btn_google_dark_normal_ios.svg');
+  /*background-image: url('google-sign-in.png');*/
+  background-position: center;
+}
+
+.signBtn {
+  margin:1.2em 1em 0;
+  color:white;
+  background-color: darkslategrey;
+}
+
+.modal-content {
+  background-color:teal;
+  color:white;
+}
+
+form {
+  text-align: center;
+}
+
+.form-control {
+  margin: auto;
+  max-width: 18em;
 }
 
 

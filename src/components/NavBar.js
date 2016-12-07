@@ -55,7 +55,7 @@ export default class NavBar extends Component {
     return (
       <div className="navbarContainer">
 
-        <SignInModal />
+        <SignInModal signIn={this._googleSignIn} />
         <nav className="navbar navbar-inverse">
           <div className="">
             <div className="navbar-header">
