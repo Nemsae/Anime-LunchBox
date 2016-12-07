@@ -32,7 +32,7 @@ app.use('/static', express.static('/build'));
 app.use('/api', require('./routes/api'));
 
 app.get('*', (req, res) => {
-  let indexPath = path.join(__dirname, '../src/index.html');
+  let indexPath = path.join(__dirname, '../build/index.html');
   res.sendFile(indexPath);
 });
 //  SERVER LISTEN
