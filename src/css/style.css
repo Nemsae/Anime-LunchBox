@@ -10,6 +10,10 @@ img {
   width:100%;
 }
 
+h1 {
+  text-align: center;
+}
+
 .hamtitleContainer {
   display: flex;
   justify-content: space-between;
@@ -46,12 +50,12 @@ a.link {
   font-size: 130%;
 }
 .componentContainer {
-  overflow: auto;
   display: flex;
   flex-direction: column;
 }
 
 .layoutContainer {
+  overflow: auto;
   display: flex;
   flex-direction: column;
 }
@@ -103,6 +107,17 @@ form {
   max-width: 18em;
 }
 
+.compContainer {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.encloser {
+  width:50%;
+  margin:auto;
+  padding:1em;
+  max-width: 13em;
+}
 
 @media screen and (min-width: 768px) {
   .layoutContainer {
@@ -127,7 +142,16 @@ form {
     padding: 0;
   }
 
+  .layoutContainer {
+    overflow:hidden;
+  }
+
   .componentContainer {
     flex-grow: 2;
+    overflow: auto;
+  }
+
+  .encloser {
+    max-width: 16em;
   }
 }

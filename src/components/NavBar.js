@@ -104,14 +104,14 @@ export default class NavBar extends Component {
           </ul>
           </div>
           :
-          <div className='navbar navbar-inverse navbar-fixed-left'>
-          <ul className='nav navbar-nav'>
-          <li>Anime<br />LunchBox</li>
-          <li><Link className='link' to='/'>Home</Link><img className='linkImg' src={stickers.home} /></li>
-          <li onClick={this._toggleModal}><a className='link' >Login</a><img className='linkImg' src={stickers.home} /></li>
-          <li><Link className='link' to='/search'>Search</Link><img className='linkImg' src={stickers.search} /></li>
-          </ul>
-          </div>
+            <div className='navbar navbar-inverse navbar-fixed-left'>
+              <ul className='nav navbar-nav'>
+                <li>Anime<br />LunchBox</li>
+                  <li><Link className='link' to='/'>Home</Link><img className='linkImg' src={stickers.home} /></li>
+                    <li onClick={this._toggleModal}><a className='link' >Login</a><img className='linkImg' src={stickers.home} /></li>
+                      <li><Link className='link' to='/search'>Search</Link><img className='linkImg' src={stickers.search} /></li>
+        </ul>
+        </div>
         } */}
 
 

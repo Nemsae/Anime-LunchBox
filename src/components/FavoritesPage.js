@@ -41,10 +41,11 @@ export default class FavoritesPage extends Component {
     return (
       <div className='componentContainer'>
         <h1>Favorites</h1>
+        <div className="compContainer">
         {
           animeFavorites.map((anime) => {
             let divStyle = {
-              backgroundImage: `url(${anime.image})`
+                backgroundImage: `url(${anime.image})`
             };
             return (
               <div key={uuid()} className='encloser'>
@@ -96,6 +97,8 @@ export default class FavoritesPage extends Component {
             );
           })
         }
+
+      </div>
       </div>
     );
   }
