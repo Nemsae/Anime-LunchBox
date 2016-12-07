@@ -25,7 +25,7 @@ export default class AnimeModal extends Component {
       backgroundImage: background.length && `url(${background[num].images.original.url})`
     };
     return (
-      <div className={`modal fade bs-example-modal-md${anime.id} firstLevelModal`} id="animeModalMain" tabIndex='-1' role='dialog' aria-labelledby='mySmallModalLabel'>
+      <div className={`modal fade bs-example-modal-md firstLevelModal`} id="animeModalMain" tabIndex='-1' role='dialog' aria-labelledby='mySmallModalLabel'>
         <div className='modal-dialog modal-md secondLevelModal' role='document'>
           <div className='modal-content thirdLevelModal'>
             <div className='modalPicContainer fourthLevelModal' >
