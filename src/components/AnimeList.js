@@ -4,12 +4,11 @@ import AnimeStore from '../stores/AnimeStore';
 import uuid from 'uuid';
 import AnimeModal from './AnimeModal';
 
-export default class SearchTable extends Component {
+export default class AnimeList extends Component {
   constructor () {
     super();
 
     this.state = {
-      animeResults: AnimeStore.getAnimeResults(),
       background: AnimeStore.getBackground(),
       currAnime: [],
     };
@@ -28,7 +27,6 @@ export default class SearchTable extends Component {
 
   _onChange () {
     this.setState({
-      animeResults: AnimeStore.getAnimeResults(),
       background: AnimeStore.getBackground(),
     });
   }
@@ -40,12 +38,13 @@ export default class SearchTable extends Component {
   }
 
   render () {
+    let animeList = this.props.animeList;
     let { animeResults, currAnime, background } = this.state;
     return (
       <div className='compContainer'>
         <AnimeModal anime={currAnime} background={background}/>
         {
-          animeResults.map((anime) => {
+          animeList.map((anime) => {
             return (
               <div key={anime.id} className='encloser' onClick={() => this.setCurrAnime(anime)} data-toggle='modal' data-target={`.bs-example-modal-md`}>
                 <div className='animeSquare' >

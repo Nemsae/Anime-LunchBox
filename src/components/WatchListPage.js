@@ -1,24 +1,23 @@
 import React, { Component } from 'react';
 import AnimeActions from '../actions/AnimeActions';
 import AnimeStore from '../stores/AnimeStore';
-import API from '../API';
 import uuid from 'uuid';
+import API from '../API';
 import AnimeList from './AnimeList';
 
-export default class FavoritesPage extends Component {
+export default class WatchListPage extends Component {
   constructor () {
     super();
 
     this.state = {
-      animeFavorites: AnimeStore.getFavorites()
+      watchList: AnimeStore.getWatchList()
     };
 
     this._onChange = this._onChange.bind(this);
-    this._deleteFavorite = this._deleteFavorite.bind(this);
   }
 
   componentWillMount () {
-    API.fetchFavorites();
+    API.fetchWatchList();
     AnimeStore.startListening(this._onChange);
   }
 
@@ -28,29 +27,32 @@ export default class FavoritesPage extends Component {
 
   _onChange () {
     this.setState({
-      animeFavorites: AnimeStore.getFavorites()
+      watchList: AnimeStore.getWatchList()
     });
   }
 
-  _deleteFavorite (id) {
-    AnimeActions.deleteFavorite(id);
+  _deleteToWatch (id) {
+    console.log('id watchlist: ', id);
+    AnimeActions.deleteToWatch(id);
   }
 
   render () {
-    let { animeFavorites } = this.state;
-    console.log('favs in component:', animeFavorites);
+    let { watchList } = this.state;
+    console.log('watchList component: ', watchList);
     return (
       <div className='componentContainer'>
-        <h1>Favorites</h1>
-        <AnimeList animeList={animeFavorites} />
-        {/* <div className="compContainer">
+        <h1>Watch List</h1>
+        <AnimeList  animeList={ watchList }/>
+        {/*<div className="compContainer">
           {
-          animeFavorites.map((anime) => {
+            watchList.map((anime) => {
             let divStyle = {
             backgroundImage: `url(${anime.image})`
             };
             return (
-            <div key={uuid()} className='encloser'>
+            <div className="compContainer">
+            <div key={anime.id} className='encloser'>
+
             <div>
             <img src={anime.image} data-toggle='modal' data-target={`.bs-example-modal-md${anime.id}`} />
             </div>
@@ -63,7 +65,7 @@ export default class FavoritesPage extends Component {
             <div className='playerContainer' style={divStyle}>
             <iframe allowFullScreen='allowFullScreen' id='player' type='text/html' width='640' height='390'
             src={`https://www.youtube.com/embed?listType=search&list=${anime.title} anime`}
-            frameBorder='0' />
+            frameBorder='0'></iframe>
             </div>
 
             <div className='animeInfoContainer'>
@@ -90,18 +92,19 @@ export default class FavoritesPage extends Component {
             }
             </div>
             </div>
-            <button className='delBtn btn btn-danger' onClick={this._deleteFavorite.bind(null, anime.animeId)} data-dismiss='modal'>Delete</button>
+            <button className='delBtn btn btn-danger' onClick={this._deleteToWatch.bind(this, anime.animeId)} data-dismiss='modal'>Delete</button>
             </div>
             </div>
             </div>
             </div>
             </div>
-            );
+            // </div>
+            )
             })
             }
-
           </div> */}
-        </div>
-        );
+      </div>
+
+    )
   }
 }

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import AnimeStore from '../stores/AnimeStore';
-// import SignIn from './SignIn';
 import { AuthActions, signInWithGoogle, signOut } from '../actions/AuthActions';
 import ServerActions from '../actions/ServerActions';
 import AuthStore from '../stores/AuthStore';
@@ -53,7 +52,14 @@ export default class NavBar extends Component {
     console.log('userStatus:', userStatus);
     console.log('this.props:', this.props);
     return (
+
       <div className="navbarContainer">
+        <div className="userName">
+          <img className="userNameImage" src="https://media.giphy.com/media/Kj9MIveYFMKvS/giphy.gif" alt=""/>
+          {
+            userStatus.authenticated ? <h3 className="userNameText">{userStatus.user.displayName}</h3> : <h3 className="userNameText">Guest</h3>
+            }
+        </div>
 
         <SignInModal signIn={this._googleSignIn} />
         <nav className="navbar navbar-inverse">

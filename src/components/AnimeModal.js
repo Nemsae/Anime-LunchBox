@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import AnimeActions from '../actions/AnimeActions';
 import AnimeStore from '../stores/AnimeStore';
+import uuid from 'uuid';
 // import Youtube from './Youtube';
 
 export default class AnimeModal extends Component {
@@ -30,7 +31,7 @@ export default class AnimeModal extends Component {
           <div className='modal-content thirdLevelModal'>
             <div className='modalPicContainer fourthLevelModal' >
 
-
+              
               <div className='animeInfoContainer'>
                 <h5 className="animeModalClose" data-dismiss="modal" target="firstLevelModal">X</h5>
                 <div className='animeTitle text-center'>
@@ -53,7 +54,8 @@ export default class AnimeModal extends Component {
                 <div className='genreContainer'>
                   <h4>Genres:</h4>
                   {
-                    anime.length && anime.genres.map((genre) => {
+                    anime.genres !== undefined && anime.genres.map((genre) => {
+                      console.log('genre.name:', genre.name);
                       return (
                         <h5 key={uuid()}>{genre.name}</h5>
                       );
