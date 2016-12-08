@@ -4,58 +4,52 @@ import { firebaseAuth, firebaseDb } from '../firebase';
 
 export function signInWithGoogle () {
   const provider = new firebase.auth.GoogleAuthProvider();
-  // console.log('provider: ', provider);
-  // console.log('authenticate: ', authenticate);
   return authenticate(provider);
 }
 
 function authenticate (provider) {
-  // return (dispatch) => {
-    firebaseAuth.signInWithPopup(provider)
-      .then((result) => {
-        console.log('result000: ', result);
+  firebaseAuth.signInWithPopup(provider)
+    .then((result) => {
+      console.log('result000: ', result);
 
-        let userId = result.user.uid;
-        let displayName = result.user.displayName;
-        let email = result.user.email;
-        let photoURL = result.user.photoURL;
+      let userId = result.user.uid;
+      let displayName = result.user.displayName;
+      let email = result.user.email;
+      let photoURL = result.user.photoURL;
 
-        const usersRef = firebaseDb.ref('users');
-        //  look for that uid
-        usersRef.on('value', (snap) => {
-          let users = snap.val();
+      const usersRef = firebaseDb.ref('users');
 
-          // if (users[`users/${userId}`]) {
-          if (users[userId]) {
-            console.log('Node Exists');
-          } else {
-            console.log('Create Node');
-            console.log('users/userId: ', `users/${userId}`);
-            firebaseDb.ref('users/' + userId).set({
-              displayName,
-              email,
-              photoURL
-            });
-          }
-          console.log('userNode in actions:1 ', users);
-          // AuthStore.getUsers(users);
-          return;
-        });
+      usersRef.on('value', (snap) => {
+        let users = snap.val();
 
-        AuthActions.signInSuccess(result);
-        initAuth();
-      })
-      .catch((err) => AuthActions.signInError(err));
-  // };
+        // if (users[`users/${userId}`]) {
+        if (users[userId]) {
+          console.log('Node Exists');
+        } else {
+          console.log('Create Node');
+          console.log('users/userId: ', `users/${userId}`);
+          firebaseDb.ref('users/' + userId).set({
+            displayName,
+            email,
+            photoURL
+          });
+        }
+        console.log('userNode in actions:1 ', users);
+        // AuthStore.getUsers(users);
+        return;
+      });
+
+      AuthActions.signInSuccess(result);
+      initAuth();
+    })
+    .catch((err) => AuthActions.signInError(err));
 }
 
 export function signOut () {
-  // return (dispatch) => {
-    console.log('sign out clicked');
-    firebaseAuth.signOut()
-      .then(() => AuthActions.signOutSuccess())
-      .then(() => AuthActions.initAuthError());
-  // };
+  console.log('sign out clicked');
+  firebaseAuth.signOut()
+    .then(() => AuthActions.signOutSuccess())
+    .then(() => AuthActions.initAuthError());
 }
 
 export function initAuth (dispatch) {
