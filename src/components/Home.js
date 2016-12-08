@@ -12,7 +12,7 @@ export default class Home extends Component {
               Curious to know if an anime is still airing? Or maybe if you saw every
               episode of a specific anime? Find out by using Anime Lunchbox!
               With Anime Lunchbox you can see if an anime is still airing,
-              the number of episodes available, genres, or preview of an anime.
+              the number of episodes available, genres, or watch a preview of an anime.
             </p>
           </div>
           <div className='homeWallPaper' />
