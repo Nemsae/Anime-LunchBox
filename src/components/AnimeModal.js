@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import AnimeActions from '../actions/AnimeActions';
 import AnimeStore from '../stores/AnimeStore';
+import uuid from 'uuid';
 // import Youtube from './Youtube';
 
 export default class AnimeModal extends Component {
@@ -11,10 +12,12 @@ export default class AnimeModal extends Component {
   }
 
   _addFavorite (anime) {
+    console.log('_addFavorite')
     AnimeActions.addFavorite(anime);
   }
 
   _addToWatch (anime) {
+    console.log('_addToWatch')
     AnimeActions.addToWatch(anime);
   }
 
@@ -25,23 +28,23 @@ export default class AnimeModal extends Component {
       backgroundImage: background.length && `url(${background[num].images.original.url})`
     };
     return (
-      <div className={`modal fade bs-example-modal-md${anime.id} firstLevelModal`} tabIndex='-1' role='dialog' aria-labelledby='mySmallModalLabel'>
+      <div className={`modal fade bs-example-modal-md firstLevelModal`} id="animeModalMain" tabIndex='-1' role='dialog' aria-labelledby='mySmallModalLabel'>
         <div className='modal-dialog modal-md secondLevelModal' role='document'>
           <div className='modal-content thirdLevelModal'>
             <div className='modalPicContainer fourthLevelModal' >
 
-              <div className='playerContainer'
-                style={divStyle}
-              >
-                <iframe allowFullScreen='allowFullScreen' id='player' type='text/html' width='640' height='390'
-                  src={`https://www.youtube.com/embed?listType=search&list=${anime.title} anime`}
-                  frameBorder='0'></iframe>
-              </div>
 
               <div className='animeInfoContainer'>
-                <img src={anime.cover_image} alt='main pic' className='modalPic' />
-                <h3 className='headings title'><b>{anime.title}</b></h3>
-                <div className='sideImageInfo'>
+                <h5 className="animeModalClose" data-dismiss="modal" target="firstLevelModal">X</h5>
+                <div className='animeTitle text-center'>
+                  <img src={anime.cover_image} alt='main pic' className='modalPic' />
+                  <h3 className='headings title'><b>{anime.title}</b></h3>
+                </div>
+                <div className='btnContainer text-center'>
+                  <button className='btn btn-primary' onClick={this._addFavorite.bind(null, anime)}>Add to Favorites</button>
+                  <button className='btn btn-success' onClick={this._addToWatch.bind(null, anime)}>Add to WatchList</button>
+                </div>
+                <div className='animeInfo'>
                   <h4>Type: {anime.show_type}</h4>
                   <h4>Status: {anime.status}</h4>
                   <h4>Episodes: {anime.episode_count}</h4>
@@ -53,7 +56,8 @@ export default class AnimeModal extends Component {
                 <div className='genreContainer'>
                   <h4>Genres:</h4>
                   {
-                    anime.length && anime.genres.map((genre) => {
+                    anime.genres !== undefined && anime.genres.map((genre) => {
+                      console.log('genre.name:', genre.name);
                       return (
                         <h5 key={uuid()}>{genre.name}</h5>
                       );
@@ -61,10 +65,16 @@ export default class AnimeModal extends Component {
                   }
                 </div>
               </div>
-              <div className='btnContainer'>
-                <button className='btn btn-primary' onClick={this._addFavorite.bind(null, anime)}>Add to Favorites</button>
-                <button className='btn btn-success' onClick={this._addToWatch.bind(null, anime)}>Add to WatchList</button>
+
+              <div className='playerContainer'
+                style={divStyle}
+              >
+                <iframe allowFullScreen='allowFullScreen' id='player' type='text/html' width='640' height='390'
+                  src={`https://www.youtube.com/embed?listType=search&list=${anime.title} anime`}
+                  frameBorder='0'></iframe>
               </div>
+
+
             </div>
           </div>
         </div>
