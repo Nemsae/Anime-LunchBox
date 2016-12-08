@@ -5,6 +5,7 @@ let _userStatus = {
   authenticated: false,
   user: {}
 };
+let _initStatus = false;
 let _errorStatus = 'No User Error';
 let _users = [];
 
@@ -23,9 +24,14 @@ class AuthStore extends EventEmitter {
           }
           this.emit('CHANGE');
         } break;
+        case 'INIT_AUTH_SUCCESS': {
+          console.log('AUTH SUCCESS: ', action.payload);
+          _initStatus = action.payload;
+          this.emit('CHANGE');
+        } break;
         case 'INIT_AUTH_ERROR': {
-          console.log('AUTH ERROR: ', action.payload)
-          _errorStatus = action.payload;
+          console.log('AUTH ERROR: ', action.payload);
+          _initStatus = false;
           this.emit('CHANGE');
         } break;
         case 'SIGN_OUT_SUCCESS': {
@@ -54,6 +60,10 @@ class AuthStore extends EventEmitter {
 
   getUserStatus () {
     return _userStatus;
+  }
+
+  getInitStatus () {
+    return _initStatus;
   }
 
   getErrorStatus () {

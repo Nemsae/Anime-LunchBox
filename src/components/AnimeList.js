@@ -4,6 +4,8 @@ import AnimeStore from '../stores/AnimeStore';
 import uuid from 'uuid';
 import AnimeModal from './AnimeModal';
 
+import { firebaseCurrentUser } from '../firebase';
+
 export default class AnimeList extends Component {
   constructor () {
     super();
@@ -19,6 +21,7 @@ export default class AnimeList extends Component {
 
   componentWillMount () {
     AnimeStore.startListening(this._onChange);
+    console.log('firebaseCurrent id: ', firebaseCurrentUser.currentUser.uid);
   }
 
   componentWillUnmount () {
@@ -39,8 +42,7 @@ export default class AnimeList extends Component {
 
   render () {
     let animeList = this.props.animeList;
-    let { animeResults, currAnime, background } = this.state;
-    console.log('do i do anything? ', animeResults)
+    let { currAnime, background } = this.state;
     return (
       <div className='compContainer'>
         <AnimeModal anime={currAnime} background={background}/>

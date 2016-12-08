@@ -41,7 +41,7 @@ export default class SearchPage extends Component {
   }
 
   render () {
-    console.log('firebaseCurrent: ', firebaseCurrentUser.currentUser);
+
     let { animeResults } = this.state;
     return (
       <div className='componentContainer'>
