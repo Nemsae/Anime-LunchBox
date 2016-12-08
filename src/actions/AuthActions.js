@@ -43,7 +43,8 @@ export function initAuth (dispatch) {
         dispatch(initAuthError(error));
         reject(error);
         // resolve();
-      });
+      }
+    );
   });
 }
 

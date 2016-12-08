@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import AnimeStore from '../stores/AnimeStore';
+import AuthStore from '../stores/AuthStore';
 import Login from './Login';
+
+import { firebaseDb } from '../firebase';
 
 export default class NavBar extends Component {
   constructor () {
@@ -10,7 +13,7 @@ export default class NavBar extends Component {
     this.state = {
       stickers: AnimeStore.getStickers(),
       modal: false,
-      loggedIn: false,
+      userStatus: AuthStore.getUserStatus()
     };
 
     this._onChange = this._onChange.bind(this);
@@ -18,15 +21,28 @@ export default class NavBar extends Component {
 
   componentWillMount () {
     AnimeStore.startListening(this._onChange);
+    console.log('firebaseDb: ', firebaseDb);
+    const usersRef = firebaseDb.ref('users');
+
+    usersRef.on('value', (snap) => {
+      let users = snap.val();
+      console.log('users: ', users);
+
+      //  TODO fluxify
+      AuthStore.getUsers(users);
+    });
   }
 
   componentWillUnmount () {
     AnimeStore.stopListening(this._onChange);
+    usersRef.off();
   }
 
   _onChange () {
     this.setState({
-      stickers: AnimeStore.getStickers()
+      stickers: AnimeStore.getStickers(),
+      userStatus: AuthStore.getUserStatus(),
+      users: AuthStore.getUsers()
     });
   }
 
@@ -37,12 +53,13 @@ export default class NavBar extends Component {
   }
 
   render () {
-    let { stickers, modal, loggedIn } = this.state;
-
+    let { stickers, modal, userStatus, users } = this.state;
+    console.log('userStatus: ', userStatus);
+    console.log('users: ', users);
     return (
       <div>
 
-        {loggedIn ? <div className='navbar navbar-inverse navbar-fixed-left'>
+        {userStatus ? <div className='navbar navbar-inverse navbar-fixed-left'>
           <ul className='nav navbar-nav'>
             <li>Anime<br />LunchBox</li>
             <li><Link className='link' to='/'>Home</Link><img className='linkImg' src={stickers.home} /></li>

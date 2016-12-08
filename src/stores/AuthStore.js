@@ -6,6 +6,7 @@ let _userStatus = {
   user: {}
 };
 let _errorStatus = 'No User Error';
+let _users = [];
 
 class AuthStore extends EventEmitter {
   constructor () {
@@ -34,6 +35,11 @@ class AuthStore extends EventEmitter {
           };
           this.emit('CHANGE');
         } break;
+        case 'RECEIVE_USERS': {
+          _users = action.payload;
+          console.log('_users in store: ', _users);
+          this.emit('CHANGE');
+        } break;
       }
     });
   }
@@ -52,6 +58,10 @@ class AuthStore extends EventEmitter {
 
   getErrorStatus () {
     return _errorStatus;
+  }
+
+  getUsers () {
+    return _users;
   }
 }
 

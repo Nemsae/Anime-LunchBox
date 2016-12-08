@@ -3,6 +3,8 @@ import AnimeActions from '../actions/AnimeActions';
 import SearchTable from './SearchTable';
 import API from '../API';
 
+import { firebaseCurrentUser } from '../firebase';
+
 export default class SearchPage extends Component {
   constructor () {
     super();
@@ -19,6 +21,7 @@ export default class SearchPage extends Component {
   }
 
   render () {
+    console.log('firebaseCurrent: ', firebaseCurrentUser.currentUser);
     return (
       <div className='componentContainer'>
         <h1>Search Anime</h1>

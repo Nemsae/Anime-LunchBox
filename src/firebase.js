@@ -1,14 +1,14 @@
 import firebase from 'firebase';
 
 var config = {
-  apiKey: 'AIzaSyAlOW3qbowWxpXnyuWC3M65QmKe7nch4to',
-  authDomain: 'testauth-eba5e.firebaseapp.com',
-  databaseURL: 'https://testauth-eba5e.firebaseio.com',
-  storageBucket: 'testauth-eba5e.appspot.com',
-  messagingSenderId: '992651073933'
+  apiKey: 'AIzaSyAdcfKv3Eg-zXCyyStWfCXAaFtflh3H3Gw',
+  authDomain: 'anime-lunchbox.firebaseapp.com',
+  databaseURL: 'https://anime-lunchbox.firebaseio.com',
+  storageBucket: 'anime-lunchbox.appspot.com',
+  messagingSenderId: '12879002376'
 };
- // firebase.initializeApp(config);
 
 export const firebaseApp = firebase.initializeApp(config);
 export const firebaseDb = firebaseApp.database();
 export const firebaseAuth = firebaseApp.auth();
+export const firebaseCurrentUser = firebase.auth();
