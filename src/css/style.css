@@ -1,11 +1,15 @@
-body, html, #root, .layoutContainer {
+body, html, #root, .layoutContainer  {
   height: 100%;
   width:100%;
   overflow: hidden;
-  background-image: url('https://i.ytimg.com/vi/FAx59Q58qRY/maxresdefault.jpg');
-  background-position: center;
+}
+
+body {
+  background-image: url('http://25.media.tumblr.com/tumblr_m81bemWVEN1ra7exvo1_1280.jpg');
+  background-position: center center;
   background-size: cover;
 }
+
 
 /*Mobile First Approach*/
 
@@ -25,8 +29,8 @@ img {
 .userNameText {
   color:white;
   z-index:10;
-  padding:0;
-  background-color: rgba(0,0,0,.7);
+  padding:0.5em;
+  background-color: rgba(0,0,0,.5);
 }
 
 .userNameImage {
@@ -34,6 +38,7 @@ img {
   margin:auto;
   left:0;
   right:0;
+  max-width: 12em;
 }
 
 h1 {
@@ -87,16 +92,39 @@ a.link {
 .componentContainer {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background-image: url('http://orig14.deviantart.net/c40a/f/2014/188/a/2/goku_super_saiyan_god_by_bardocksonic-d7ppcr2.png');
+  background-size: 25%;
+  background-position: center bottom;
+  background-repeat: no-repeat;
 }
 
 .layoutContainer {
+
   overflow: auto;
   display: flex;
   flex-direction: column;
+
+}
+
+.homeContainer {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .form-control.searchBar {
   margin: 1em auto;
+}
+
+.animeIntroContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 2em;
+  color: black;
+  max-width: 30em;
 }
 
 /*SignIn Modal*/
@@ -221,6 +249,7 @@ h3.headings.title {
     margin-top: 2em;
   }
 
+
   .compContainer {
     margin-top: 3.5em;
   }
@@ -256,9 +285,41 @@ h3.headings.title {
     overflow: auto;
   }
 
+  .homeContainer {
+      align-items: center;
+  }
+
+  .animeIntroContainer {
+    background-color: rgba(255,255,255,.7);
+    margin-top: -15em;
+  }
+
   .encloser {
     max-width: 16em;
   }
+
+  .genreContainer{
+    display: flex;
+    flex-flow: row wrap;
+    alignment-baseline: stretch;
+    width: 100%;
+    align-items: baseline;
+    justify-content: flex-start;
+  }
+
+  div.genreContainer h5 {
+    border: 1px solid black;
+    padding:.2em;
+    margin:.2em;
+  }
+
+  .animeSquare:hover {
+    transform: scale(1.1);
+    box-shadow: black 0 0 1em;
+    transition: all .5s;
+  }
+
+
 
 }
 

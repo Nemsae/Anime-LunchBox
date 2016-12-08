@@ -46,19 +46,19 @@ export default class FavoritesPage extends Component {
         {/* <div className="compContainer">
           {
           animeFavorites.map((anime) => {
-            let divStyle = {
-            backgroundImage: `url(${anime.image})`
-            };
-            return (
-            <div key={uuid()} className='encloser'>
-            <div>
-            <img src={anime.image} data-toggle='modal' data-target={`.bs-example-modal-md${anime.id}`} />
-            </div>
-            <h4>{anime.title}</h4>
-            <div className={`modal fade bs-example-modal-md${anime.id} firstLevelModal`} tabIndex='-1' role='dialog' aria-labelledby='mySmallModalLabel'>
-            <div className='modal-dialog modal-md secondLevelModal' role='document'>
-            <div className='modal-content thirdLevelModal'>
-            <div className='modalPicContainer fourthLevelModal' >
+          let divStyle = {
+          backgroundImage: `url(${anime.image})`
+          };
+          return (
+          <div key={uuid()} className='encloser'>
+          <div>
+          <img src={anime.image} data-toggle='modal' data-target={`.bs-example-modal-md${anime.id}`} />
+          </div>
+          <h4>{anime.title}</h4>
+          <div className={`modal fade bs-example-modal-md${anime.id} firstLevelModal`} tabIndex='-1' role='dialog' aria-labelledby='mySmallModalLabel'>
+          <div className='modal-dialog modal-md secondLevelModal' role='document'>
+          <div className='modal-content thirdLevelModal'>
+          <div className='modalPicContainer fourthLevelModal' >
 
             <div className='playerContainer' style={divStyle}>
             <iframe allowFullScreen='allowFullScreen' id='player' type='text/html' width='640' height='390'

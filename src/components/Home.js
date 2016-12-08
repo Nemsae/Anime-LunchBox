@@ -4,17 +4,20 @@ export default class Home extends Component {
 
   render () {
     return (
-      <div>
-        <div>
-          <h3>Welcome to Anime LunchBox</h3>
-          <p>
-            Anime Lunchbox was created to quickly search for an anime title.
-            Search for an anime, check if it's still airing, and
-            watch a preview. One may also create an account and save their
-            favorite anime or just add to a watchlist.
-          </p>
+      <div className="componentContainer">
+        <div className="homeContainer">
+          <div className="animeIntroContainer">
+            <h3 className="text-center animeIntroTitle">Welcome to Anime LunchBox</h3>
+            <p className="animeIntroContent">
+              Add anime to your Anime Lunchbox by adding to favorites and watchlist!
+              Curious to know if an anime is still airing? Or maybe if you saw every
+              episode of a specific anime? Find out by using Anime Lunchbox!
+              With Anime Lunchbox you can see if an anime is still airing,
+              the number of episodes available, genres, or watch a preview of an anime.
+            </p>
+          </div>
+          <div className='homeWallPaper' />
         </div>
-        <div className='homeWallPaper' />
       </div>
     );
   }

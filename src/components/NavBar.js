@@ -82,7 +82,7 @@ export default class NavBar extends Component {
           {
             initSuccess ? <h3 className="userNameText">{userStatus.user.displayName}</h3> : <h3 className="userNameText">Guest</h3>
             // userStatus.authenticated ? <h3 className="userNameText">{userStatus.user.displayName}</h3> : <h3 className="userNameText">Guest</h3>
-            }
+          }
         </div>
 
         <SignInModal signIn={this._googleSignIn} />
