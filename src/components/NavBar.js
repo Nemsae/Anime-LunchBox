@@ -80,7 +80,7 @@ export default class NavBar extends Component {
         <div className="userName">
           <img className="userNameImage" src="https://media.giphy.com/media/Kj9MIveYFMKvS/giphy.gif" alt=""/>
           {
-            initSuccess ? <h3 className="userNameText">{userStatus.user.displayName}</h3> : <h3 className="userNameText">Guest</h3>
+            initSuccess ? <h3 className="userNameText">{initSuccess.displayName}</h3> : <h3 className="userNameText">Guest</h3>
             // userStatus.authenticated ? <h3 className="userNameText">{userStatus.user.displayName}</h3> : <h3 className="userNameText">Guest</h3>
           }
         </div>

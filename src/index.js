@@ -8,8 +8,7 @@ import SearchPage from './components/SearchPage';
 import FavoritesPage from './components/FavoritesPage';
 import WatchListPage from './components/WatchListPage';
 import AuthStore from './stores/AuthStore';
-import { initAuth, initAuthSuccess } from './actions/AuthActions';
-
+import { initAuth } from './actions/AuthActions';
 
 render(
   <Router history={browserHistory}>
