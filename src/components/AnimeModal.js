@@ -1,27 +1,111 @@
 import React, { Component } from 'react';
 import AnimeActions from '../actions/AnimeActions';
-import AnimeStore from '../stores/AnimeStore';
+// import AnimeStore from '../stores/AnimeStore';
+import AuthStore from '../stores/AuthStore';
 import uuid from 'uuid';
-// import Youtube from './Youtube';
+
+import { firebaseDb, firebaseCurrentUser } from '../firebase';
 
 export default class AnimeModal extends Component {
-  constructor() {
+  constructor () {
     super();
+
+    this.state = {
+      initStatus: AuthStore.getInitStatus()
+    };
     this._addFavorite = this._addFavorite.bind(this);
+    this._onChange = this._onChange.bind(this);
     this._addToWatch = this._addToWatch.bind(this);
   }
 
+  componentWillMount () {
+    let { initStatus } = this.state;
+
+    AuthStore.startListening(this._onChange);
+  }
+
+  componentWillUnmount () {
+    AuthStore.stopListening(this._onChange);
+  }
+
+  _onChange () {
+    this.setState({
+      initStatus: AuthStore.getInitStatus()
+    });
+  }
+
   _addFavorite (anime) {
-    console.log('_addFavorite')
-    AnimeActions.addFavorite(anime);
+    let { initStatus } = this.state;
+    if (initStatus) {
+    // if (initStatus !== false) {
+      console.log('Sanity:111');
+      let { uid } = initStatus;
+      console.log('11111111111111initStatus.uid: ', uid);
+
+      // const usersRef = firebaseDb.ref('users');
+      // const currRef = firebaseDb.ref('users').child(uid);
+      // console.log('00000000000000currRef: ', currRef);
+      // currRef.on('value', (snap) => {
+      //   let curr = snap.val();
+      //   console.log('00000000000000currNode: ', curr);
+      // });
+
+      console.log('anime: ', anime);
+      firebaseDb.ref('users/' + `${uid}/` + 'Favorites/' + `${anime.title}/`).update({
+      // firebaseDb.ref('users/' + userId).set({
+      animeId: anime.id,
+      status: anime.status,
+      title: anime.title,
+      episodes: anime.episode_count,
+      image: anime.cover_image,
+      summary: (anime.synopsis).replace(/'/g, "''"),
+      type: anime.show_type,
+      started: anime.started_airing,
+      finished: anime.finished_airing,
+      rating: anime.community_rating,
+      rated: anime.age_rating,
+      genres: JSON.stringify(anime.genres)
+      });
+    }
   }
 
   _addToWatch (anime) {
-    console.log('_addToWatch')
-    AnimeActions.addToWatch(anime);
+    let { initStatus } = this.state;
+    if (initStatus) {
+    // if (initStatus !== false) {
+      console.log('Sanity:111');
+      let { uid } = initStatus;
+      console.log('11111111111111initStatus.uid: ', uid);
+
+      // const usersRef = firebaseDb.ref('users');
+      // const currRef = firebaseDb.ref('users').child(uid);
+      // console.log('00000000000000currRef: ', currRef);
+      // currRef.on('value', (snap) => {
+      //   let curr = snap.val();
+      //   console.log('00000000000000currNode: ', curr);
+      // });
+
+      console.log('anime: ', anime);
+      firebaseDb.ref('users/' + `${uid}/` + 'WatchList/' + `${anime.title}/`).update({
+      // firebaseDb.ref('users/' + userId).set({
+        animeId: anime.id,
+        status: anime.status,
+        title: anime.title,
+        episodes: anime.episode_count,
+        image: anime.cover_image,
+        summary: (anime.synopsis).replace(/'/g, "''"),
+        type: anime.show_type,
+        started: anime.started_airing,
+        finished: anime.finished_airing,
+        rating: anime.community_rating,
+        rated: anime.age_rating,
+        genres: JSON.stringify(anime.genres)
+      });
+    }
   }
 
-  render() {
+  render () {
+    console.log('this.state of AnimeModal: ', this.state);
     let { anime, background } = this.props;
     let num = Math.floor(Math.random() * background.length);
     let divStyle = {

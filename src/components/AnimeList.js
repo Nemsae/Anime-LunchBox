@@ -21,7 +21,7 @@ export default class AnimeList extends Component {
 
   componentWillMount () {
     AnimeStore.startListening(this._onChange);
-    console.log('firebaseCurrent id: ', firebaseCurrentUser.currentUser.uid);
+    // console.log('firebaseCurrent id: ', firebaseCurrentUser.currentUser.uid);
   }
 
   componentWillUnmount () {

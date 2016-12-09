@@ -1,4 +1,6 @@
 import AppDispatcher from '../AppDispatcher';
+import firebase from 'firebase';
+import { firebaseAuth, firebaseDb } from '../firebase';
 
 const FirebaseRTDBActions = {
   receiveUsers (users) {

@@ -34,7 +34,7 @@ export default class NavBar extends Component {
 
     usersRef.on('value', (snap) => {
       let users = snap.val();
-      console.log('userNode: ', users);
+      console.log('userNode of NavBar: ', users);
 
       //  TODO fluxify
       // AuthStore.getUsers(users);
