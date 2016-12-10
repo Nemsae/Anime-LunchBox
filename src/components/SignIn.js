@@ -13,7 +13,7 @@ export default class SignIn extends Component {
 
     this.state = {
       userStatus: AuthStore.getUserStatus(),
-      errorStatus: AuthStore.getErrorStatus(),
+      errorStatus: AuthStore.getErrorStatus()
     };
 
     this._onChange = this._onChange.bind(this);

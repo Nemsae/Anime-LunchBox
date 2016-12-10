@@ -21,13 +21,13 @@ class AnimeStore extends EventEmitter {
         case 'RECEIVE_FAVORITES': {
           let {favorites} = action.payload;
           console.log('favorites in store: ', favorites);
-          // _favorites = favorites.reverse();
+          _favorites = favorites;
           this.emit('CHANGE');
         } break;
         case 'RECEIVE_WATCHLIST': {
           let {watchList} = action.payload;
           console.log('watchList in store: ', watchList);
-          // _watchList = watchList.reverse();
+          _watchList = watchList;
           this.emit('CHANGE');
         } break;
         case 'RECEIVE_STICKERS': {

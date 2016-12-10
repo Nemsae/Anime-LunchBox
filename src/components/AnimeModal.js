@@ -53,17 +53,17 @@ export default class AnimeModal extends Component {
       console.log('anime: ', anime);
       firebaseDb.ref('users/' + `${uid}/` + 'Favorites/' + `${anime.title}/`).update({
       // firebaseDb.ref('users/' + userId).set({
-      animeId: anime.id,
+      id: anime.id,
       status: anime.status,
       title: anime.title,
-      episodes: anime.episode_count,
-      image: anime.cover_image,
-      summary: (anime.synopsis).replace(/'/g, "''"),
-      type: anime.show_type,
-      started: anime.started_airing,
-      finished: anime.finished_airing,
-      rating: anime.community_rating,
-      rated: anime.age_rating,
+      episode_count: anime.episode_count,
+      cover_image: anime.cover_image,
+      synopsis: (anime.synopsis).replace(/'/g, "''"),
+      show_type: anime.show_type,
+      started_airing: anime.started_airing,
+      finished_airing: anime.finished_airing,
+      community_rating: anime.community_rating,
+      age_rating: anime.age_rating,
       genres: JSON.stringify(anime.genres)
       });
     }
@@ -88,17 +88,17 @@ export default class AnimeModal extends Component {
       console.log('anime: ', anime);
       firebaseDb.ref('users/' + `${uid}/` + 'WatchList/' + `${anime.title}/`).update({
       // firebaseDb.ref('users/' + userId).set({
-        animeId: anime.id,
+        id: anime.id,
         status: anime.status,
         title: anime.title,
-        episodes: anime.episode_count,
-        image: anime.cover_image,
-        summary: (anime.synopsis).replace(/'/g, "''"),
-        type: anime.show_type,
-        started: anime.started_airing,
-        finished: anime.finished_airing,
-        rating: anime.community_rating,
-        rated: anime.age_rating,
+        episode_count: anime.episode_count,
+        cover_image: anime.cover_image,
+        synopsis: (anime.synopsis).replace(/'/g, "''"),
+        show_type: anime.show_type,
+        started_airing: anime.started_airing,
+        finished_airing: anime.finished_airing,
+        community_rating: anime.community_rating,
+        age_rating: anime.age_rating,
         genres: JSON.stringify(anime.genres)
       });
     }
@@ -140,12 +140,12 @@ export default class AnimeModal extends Component {
                 <div className='genreContainer'>
                   <h4>Genres:</h4>
                   {
-                    anime.genres !== undefined && anime.genres.map((genre) => {
-                      console.log('genre.name:', genre.name);
-                      return (
-                        <h5 key={uuid()}>{genre.name}</h5>
-                      );
-                    })
+                    // anime.genres !== undefined && anime.genres.map((genre) => {
+                    //   console.log('genre.name:', genre.name);
+                    //   return (
+                    //     <h5 key={uuid()}>{genre.name}</h5>
+                    //   );
+                    // })
                   }
                 </div>
               </div>
