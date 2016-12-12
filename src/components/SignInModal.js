@@ -39,6 +39,7 @@ export default function SignInModal (props) {
                 <button
                   className="signBtn btn googleSignBtn"
                   onClick={googleSignIn}
+                  data-dismiss="modal"
                 >
                   <h5 className="signInText">Sign in with Google</h5>
                 </button>

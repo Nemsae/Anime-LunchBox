@@ -102,19 +102,19 @@ export default class NavBar extends Component {
                 // !userStatus.authenticated ?
                 initSuccess ?
                   <ul className="nav navbar-nav navItemsContainer">
-                    <li className="linkItem" ><Link className='link' to='/'>Home</Link><img className='linkImg' src={stickers.home} /></li>
-                    <li className="linkItem" onClick={this._signOut}><Link className='link' className='link' >SignOut</Link><img className='linkImg' src={stickers.home} /></li>
-                    <li className="linkItem" ><Link className='link' to='/search'>Search</Link><img className='linkImg' src={stickers.search} /></li>
-                    <li className="linkItem" ><Link className='link' to='/favorites'>Favorites</Link><img className='linkImg' src={stickers.favorites} /></li>
-                    <li className="linkItem" ><Link className='link' to='/watchList'>WatchList</Link><img className='linkImg' src={stickers.watchlist} /></li>
+                    <li className="linkItem" data-toggle={window.screen.width < 768 && 'collapse'} data-target="#myNavbar"  ><Link className='link' to='/'>Home</Link><img className='linkImg' src={stickers.home}  /></li>
+                    <li className="linkItem" data-toggle="collapse" data-target="#myNavbar"  onClick={this._signOut}><Link className='link' className='link' >SignOut</Link><img className='linkImg' src={stickers.home} /></li>
+                    <li className="linkItem" data-toggle="collapse" data-target="#myNavbar"  ><Link className='link' to='/search'>Search</Link><img className='linkImg' src={stickers.search} /></li>
+                    <li className="linkItem" data-toggle="collapse" data-target="#myNavbar"  ><Link className='link' to='/favorites'>Favorites</Link><img className='linkImg' src={stickers.favorites} /></li>
+                    <li className="linkItem" data-toggle="collapse" data-target="#myNavbar"  ><Link className='link' to='/watchList'>WatchList</Link><img className='linkImg' src={stickers.watchlist} /></li>
                   </ul>
                 :
-                  <ul className="nav navbar-nav navItemsContainer">
-                    <li className="linkItem"><Link className='link' to='/'>Home</Link><img className='linkImg' src={stickers.home} /></li>
-                    <li className="linkItem"><Link className='link' to='/search'>Search</Link><img className='linkImg' src={stickers.search} /></li>
-                    <li className="linkItem" data-toggle="modal" data-target="#myModal"><Link className='link' >Sign In</Link><img className='linkImg' src={stickers.home} /></li>
-                    <li className="linkItem"><Link className='link' ><span className="glyphicon glyphicon-user"></span> Sign Up</Link><img className='linkImg' src={stickers.home} /></li>
-                  </ul>
+                <ul className="nav navbar-nav navItemsContainer">
+                  <li className="linkItem" data-toggle="collapse" data-target="#myNavbar" ><Link className='link' to='/'>Home</Link><img className='linkImg' data-toggle="collapse" data-target="#myNavbar" src={stickers.home} /></li>
+                  <li className="linkItem" data-toggle="collapse" data-target="#myNavbar" ><Link className='link' to='/search'>Search</Link><img className='linkImg' src={stickers.search} /></li>
+                  <li className="linkItem" data-toggle="collapse" data-target="#myNavbar" ><Link className='link' >Sign In</Link><img className='linkImg' src={stickers.home} /></li>
+                  <li className="linkItem" data-toggle="collapse" data-target="#myNavbar" ><Link className='link' ><span className="glyphicon glyphicon-user"></span> Sign Up</Link><img className='linkImg' src={stickers.home} /></li>
+                </ul>
               }
 
 
