@@ -18,7 +18,7 @@ export default class FavoritesPage extends Component {
   }
 
   componentWillMount () {
-    API.fetchFavorites();
+    // API.fetchFavorites();
     AnimeStore.startListening(this._onChange);
   }
 

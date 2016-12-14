@@ -17,7 +17,7 @@ export default class WatchListPage extends Component {
   }
 
   componentWillMount () {
-    API.fetchWatchList();
+    // API.fetchWatchList();
     AnimeStore.startListening(this._onChange);
   }
 
