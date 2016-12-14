@@ -17,7 +17,7 @@ export default class WatchListPage extends Component {
   }
 
   componentWillMount () {
-    API.fetchWatchList();
+    // API.fetchWatchList();
     AnimeStore.startListening(this._onChange);
   }
 
@@ -42,7 +42,7 @@ export default class WatchListPage extends Component {
     return (
       <div className='componentContainer'>
         <h1>Watch List</h1>
-        <AnimeList  animeList={ watchList }/>
+        <AnimeList  animeList={watchList} currPage={"watch"}/>
         {/*<div className="compContainer">
           {
             watchList.map((anime) => {

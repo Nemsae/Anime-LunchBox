@@ -3,9 +3,9 @@ import ServerActions from './actions/ServerActions';
 
 const API = {
   receiveSearchResults (searchTerm) {
-    axios.get(`/api/anime/search?anime=${searchTerm}`)
+    axios.get(`https://hummingbird.me/api/v1/search/anime?query=${searchTerm}`)
     .then((res) => {
-      // console.log('res in API: ', res);
+      console.log('res in API: ', res);
       ServerActions.receiveSearchResults(res.data);
     })
     .catch((err) => {
