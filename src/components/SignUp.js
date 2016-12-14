@@ -18,24 +18,28 @@ export default class SignUp extends Component {
       password: target.password.value,
       confirmPassword: target.confirmPassword.value,
     }
-    console.log('userInfo:', userInfo);
+    // console.log('userInfo:', userInfo);
 
     signUpUser(userInfo);
   }
 
   render() {
     return(
-      <form onSubmit={this.submitForm}>
-        <label htmlFor="userName"></label>
-        <input type="text" name="userName" />
-        <label htmlFor="email"></label>
-        <input type="text" name="email" />
-        <label htmlFor="password"></label>
-        <input type="text" name="password"/>
-        <label htmlFor="confirmPassword"></label>
-        <input type="text" name="confirmPassword"/>
-        <button>Create Account</button>
-      </form>
+      <div className="signUpFormContainer">
+        <h2 className="text-center">Create an Account</h2>
+        <form onSubmit={this.submitForm} className="signUpForm">
+          <label htmlFor="userName">Username</label>
+          <input type="text" name="userName" />
+          <label htmlFor="email">Email</label>
+          <input type="text" name="email" />
+          <label htmlFor="password">Password</label>
+          <input type="text" name="password"/>
+          <label htmlFor="confirmPassword">Confirm Password</label>
+          <input type="text" name="confirmPassword"/>
+          <button>Create Account</button>
+        </form>
+      </div>
+
     );
   }
 }
