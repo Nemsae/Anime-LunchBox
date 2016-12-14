@@ -117,7 +117,6 @@ export default class AnimeModal extends Component {
           <div className='modal-content thirdLevelModal'>
             <div className='modalPicContainer fourthLevelModal' >
 
-
               <div className='animeInfoContainer'>
                 <h5 className="animeModalClose" data-dismiss="modal" target="firstLevelModal">X</h5>
                 <div className='animeTitle text-center'>
@@ -163,8 +162,6 @@ export default class AnimeModal extends Component {
                   src={`https://www.youtube.com/embed?listType=search&list=${anime.title} anime`}
                   frameBorder='0'></iframe>
               </div>
-
-
             </div>
           </div>
         </div>

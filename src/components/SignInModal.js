@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { browserHistory } from 'react-router';
 // import Login from './Login';
 // import { AuthActions, signInWithGoogle, signOut } from '../actions/AuthActions';
 // console.log('AuthActions: ', AuthActions);
@@ -6,10 +7,16 @@ import React, { Component } from 'react';
 // console.log('ServerActions: ', ServerActions);
 // import AuthStore from '../stores/AuthStore';
 
+
 export default function SignInModal (props) {
     // let { userStatus, errorStatus } = this.state;
     // console.log('userStatus: ', userStatus);
     // console.log('errorStatus: ', errorStatus);
+  function signUp(e) {
+    e.preventDefault();
+      browserHistory.push("/signup")
+    }
+
   let googleSignIn = props.signIn;
     return (
       <div className="modal fade" id="myModal" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -30,7 +37,7 @@ export default function SignInModal (props) {
 
                 <div className='loginContainer text-center'>
                   <button action='submit' className=" btn signBtn">Sign In</button>
-                  <button className=" btn signBtn">Sign Up</button>
+                  <button data-dismiss="modal" className=" btn signBtn" onClick={signUp.bind(this)}>Sign Up</button>
                 </div>
               </form>
             </div>

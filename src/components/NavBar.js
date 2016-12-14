@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import AnimeStore from '../stores/AnimeStore';
-// import Login from './Login';
 import { AuthActions, signInWithGoogle, signOut, initAuth } from '../actions/AuthActions';
 import ServerActions from '../actions/ServerActions';
 import AuthStore from '../stores/AuthStore';
 import SignInModal from './SignInModal';
+import { browserHistory } from 'react-router';
 
 import { firebaseDb, firebaseCurrentUser } from '../firebase';
 
@@ -63,12 +63,15 @@ export default class NavBar extends Component {
   }
 
   _googleSignIn () {
-    console.log('sign in clicked:');
     signInWithGoogle();
   }
 
   _signOut () {
     signOut();
+  }
+
+  signUp() {
+    browserHistory.push("/signup");
   }
 
   render () {
@@ -112,7 +115,7 @@ export default class NavBar extends Component {
                   <li className="linkItem"  ><Link className='link' to='/'>Home</Link><img className='linkImg' data-toggle="collapse" data-target="#myNavbar" src={stickers.home} /></li>
                   <li className="linkItem"  ><Link className='link' to='/search'>Search</Link><img className='linkImg' src={stickers.search} /></li>
                   <li className="linkItem"  data-toggle="modal" data-target="#myModal" ><Link className='link' >Sign In</Link><img className='linkImg' src={stickers.home} /></li>
-                  <li className="linkItem"  ><Link className='link' ><span className="glyphicon glyphicon-user"></span> Sign Up</Link><img className='linkImg' src={stickers.home} /></li>
+                  <li className="linkItem" onClick={this.signUp.bind(this)} ><Link className='link' ><span className="glyphicon glyphicon-user"></span> Sign Up</Link><img className='linkImg' src={stickers.home} /></li>
                 </ul>
               }
 
@@ -124,7 +127,7 @@ export default class NavBar extends Component {
 
 
         {/* {loggedIn ? <div className='navbar navbar-inverse navbar-fixed-left'>
->>>>>>> 63ddfaf8ab3343e5fce87f9fa746ebc8ee893a1e
+          >>>>>>> 63ddfaf8ab3343e5fce87f9fa746ebc8ee893a1e
           <ul className='nav navbar-nav'>
           <li>Anime<br />LunchBox</li>
           <li><Link className='link' to='/'>Home</Link><img className='linkImg' src={stickers.home} /></li>
@@ -135,14 +138,14 @@ export default class NavBar extends Component {
           </ul>
           </div>
           :
-            <div className='navbar navbar-inverse navbar-fixed-left'>
-              <ul className='nav navbar-nav'>
-                <li>Anime<br />LunchBox</li>
-                  <li><Link className='link' to='/'>Home</Link><img className='linkImg' src={stickers.home} /></li>
-                    <li onClick={this._toggleModal}><a className='link' >Login</a><img className='linkImg' src={stickers.home} /></li>
-                      <li><Link className='link' to='/search'>Search</Link><img className='linkImg' src={stickers.search} /></li>
-        </ul>
-        </div>
+          <div className='navbar navbar-inverse navbar-fixed-left'>
+          <ul className='nav navbar-nav'>
+          <li>Anime<br />LunchBox</li>
+          <li><Link className='link' to='/'>Home</Link><img className='linkImg' src={stickers.home} /></li>
+          <li onClick={this._toggleModal}><a className='link' >Login</a><img className='linkImg' src={stickers.home} /></li>
+          <li><Link className='link' to='/search'>Search</Link><img className='linkImg' src={stickers.search} /></li>
+          </ul>
+          </div>
         } */}
 
 
