@@ -266,14 +266,36 @@ h3.headings.title {
   border:1px solid darkslategrey;
   padding:.3em;
   margin:.5em;
+  font-size:120%;
+}
+
+.signUpForm label {
+  font-size:120%;
 }
 
 .signUpForm button {
+  min-width: 155px;
   width: 50%;
   max-width: 200px;
-  padding:1em;
+  padding:.5em;
   margin:1em auto;
+  background-color: rgba(62, 60, 255, 0.71);
+  color:whitesmoke;
+  font-size:130%;
+  min-height: 3em;
 }
+
+.signUpForm button:hover {
+  background-color:rgba(190, 100, 2400, .8);
+  color:black;
+}
+
+.formError {
+  color:red;
+  font-weight: bolder;
+  font-size: 120%;
+}
+
 
 @media screen and (min-width: 768px) {
 

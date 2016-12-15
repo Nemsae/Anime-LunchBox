@@ -75,14 +75,14 @@ export default class SignUp extends Component {
           {/* <label htmlFor="userName">Username</label> */}
           {/* <input type="text" name="userName" required/> */}
           <label htmlFor="email">Email</label>
-          <div>{errors.email}</div>
+          <div className="formError">{errors.email}</div>
           <input type="email" name="email" required/>
           <label htmlFor="password">Password</label>
-          <div>{errors.password}</div>
+          <div className="formError">{errors.password}</div>
           <input type="text" minLength="6" name="password" required />
           <label htmlFor="confirmPassword">Confirm Password</label>
-          <div>{errors.password}</div>
-          <div>{errors.confirmPassword}</div>
+          <div className="formError">{errors.password}</div>
+          <div className="formError">{errors.confirmPassword}</div>
           <input type="text" minLength="6" name="confirmPassword" required />
           <button>Create Account</button>
         </form>
