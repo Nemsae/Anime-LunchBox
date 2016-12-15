@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { signUpuser } from '../actions/AuthActions';
-import { signUpUser } from '../actions/AuthActions';
-
 
 export default class SignUp extends Component {
   constructor() {
@@ -55,15 +53,17 @@ export default class SignUp extends Component {
     });
     createAccount.then( res => {
     let verified = !Object.keys(res).length ? true : false;
-     verified && signUpUser(userInfo);
+    //  verified && signUpUser(userInfo);
+     if (verified) {
+       signUpUser(userInfo);
+       target.email.value = "";
+       target.password.value = "";
+       target.confirmPassword.value = "";
+     }
     })
     .catch(err => {
       console.log('err:', err);
     })
-
-
-    // this.validateForm(userInfo)
-    // signUpUser(userInfo);
   }
 
   render() {

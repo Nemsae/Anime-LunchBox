@@ -20,19 +20,19 @@ class AnimeStore extends EventEmitter {
         } break;
         case 'RECEIVE_FAVORITES': {
           let {favorites} = action.payload;
-          console.log('favorites in store: ', favorites);
+          // console.log('favorites in store: ', favorites);
           _favorites = favorites;
           this.emit('CHANGE');
         } break;
         case 'RECEIVE_WATCHLIST': {
           let {watchList} = action.payload;
-          console.log('watchList in store: ', watchList);
+          // console.log('watchList in store: ', watchList);
           _watchList = watchList;
           this.emit('CHANGE');
         } break;
         case 'RECEIVE_STICKERS': {
           let { stickers } = action.payload;
-          console.log('stickers in store: ', stickers);
+          // console.log('stickers in store: ', stickers);
           _stickers.home = stickers[0] ? stickers[0].images.downsized.url : 'https://slack-imgs.com/?c=1&url=https%3A%2F%2Fmedia.giphy.com%2Fmedia%2FkuWN0iF9BLQKk%2Fgiphy.gif';
           _stickers.search = stickers[1] ? stickers[1].images.downsized.url : 'https://media.giphy.com/media/Is54ejaz7HiZW/giphy.gif';
           _stickers.favorites = stickers[2] ? stickers[2].images.downsized.url : 'https://media.giphy.com/media/SVacpp6YPRtTO/giphy.gif';
