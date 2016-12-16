@@ -38,9 +38,9 @@ export default class AnimeModal extends Component {
     let { initStatus } = this.state;
     if (initStatus) {
     // if (initStatus !== false) {
-      console.log('Sanity:111');
+      // console.log('Sanity:111');
       let { uid } = initStatus;
-      console.log('11111111111111initStatus.uid: ', uid);
+      // console.log('11111111111111initStatus.uid: ', uid);
 
       // const usersRef = firebaseDb.ref('users');
       // const currRef = firebaseDb.ref('users').child(uid);
@@ -50,7 +50,7 @@ export default class AnimeModal extends Component {
       //   console.log('00000000000000currNode: ', curr);
       // });
 
-      console.log('anime: ', anime);
+      // console.log('anime: ', anime);
       firebaseDb.ref('users/' + `${uid}/` + 'Favorites/' + `${anime.title}/`).update({
       // firebaseDb.ref('users/' + userId).set({
       id: anime.id,
@@ -73,9 +73,9 @@ export default class AnimeModal extends Component {
     let { initStatus } = this.state;
     if (initStatus) {
     // if (initStatus !== false) {
-      console.log('Sanity:111');
+      // console.log('Sanity:111');
       let { uid } = initStatus;
-      console.log('11111111111111initStatus.uid: ', uid);
+      // console.log('11111111111111initStatus.uid: ', uid);
 
       // const usersRef = firebaseDb.ref('users');
       // const currRef = firebaseDb.ref('users').child(uid);
@@ -85,7 +85,7 @@ export default class AnimeModal extends Component {
       //   console.log('00000000000000currNode: ', curr);
       // });
 
-      console.log('anime: ', anime);
+      // console.log('anime: ', anime);
       firebaseDb.ref('users/' + `${uid}/` + 'WatchList/' + `${anime.title}/`).update({
       // firebaseDb.ref('users/' + userId).set({
         id: anime.id,

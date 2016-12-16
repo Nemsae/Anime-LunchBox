@@ -64,7 +64,7 @@ export default class Layout extends Component {
     let { initStatus } = this.state;
     if (initStatus) {
       let { uid } = initStatus;
-      console.log('LAYOUT uid: ', uid);
+      // console.log('LAYOUT uid: ', uid);
 
       const usersRef = firebaseDb.ref('users');
       const currRef = usersRef.child(initStatus.uid);
@@ -74,20 +74,20 @@ export default class Layout extends Component {
       //  Firebase RTDB node ref for current logged in user
       currRef.on('value', (snap) => {
         let curr = snap.val();
-        console.log('----LAYOUT Some Value Changed----: ', curr);
+        // console.log('----LAYOUT Some Value Changed----: ', curr);
       });
 
       //  Firebase RTDB node ref for current user's Favorite
       currFavRef.on('value', (snap) => {
         let favs = snap.val();
-        console.log('----LAYOUT Favorites Changed----: ', favs);
+        // console.log('----LAYOUT Favorites Changed----: ', favs);
         AnimeActions.updateFavorites(favs)
       });
 
       //  Firebase RTDB node ref for current logged in user
       currWatchRef.on('value', (snap) => {
         let watch = snap.val();
-        console.log('----LAYOUT WatchList Changed----: ', watch);
+        // console.log('----LAYOUT WatchList Changed----: ', watch);
         AnimeActions.updateWatchList(watch);
       });
     }
