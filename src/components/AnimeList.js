@@ -12,7 +12,7 @@ export default class AnimeList extends Component {
 
     this.state = {
       background: AnimeStore.getBackground(),
-      currAnime: []
+      currAnime: [],
     };
 
     this._onChange = this._onChange.bind(this);
@@ -44,7 +44,7 @@ export default class AnimeList extends Component {
     console.log('00000animeList in AnimeList: ', animeList);
     let AnimeList = [];
     if (typeof animeList === 'object') {
-      let keys = Object.keys(animeList);
+      let keys = Object.keys(animeList) || [];
       AnimeList = keys.map(anime => {
         console.log('anime090909090909: ', anime);
         console.log('curr09090909090: ', animeList);
@@ -62,9 +62,10 @@ export default class AnimeList extends Component {
       });
     }
     let { currAnime, background } = this.state;
+    let currPage = this.props.currPage;
     return (
       <div className='compContainer'>
-        <AnimeModal anime={currAnime} background={background} />
+        <AnimeModal anime={currAnime} background={background} currPage={currPage} />
         {
           AnimeList
         }

@@ -105,8 +105,8 @@ export default class AnimeModal extends Component {
   }
 
   render () {
-    console.log('this.state of AnimeModal: ', this.state);
-    let { anime, background } = this.props;
+
+    let { anime, background, currPage } = this.props;
     let num = Math.floor(Math.random() * background.length);
     let divStyle = {
       backgroundImage: background.length && `url(${background[num].images.original.url})`
@@ -117,17 +117,22 @@ export default class AnimeModal extends Component {
           <div className='modal-content thirdLevelModal'>
             <div className='modalPicContainer fourthLevelModal' >
 
-
               <div className='animeInfoContainer'>
                 <h5 className="animeModalClose" data-dismiss="modal" target="firstLevelModal">X</h5>
                 <div className='animeTitle text-center'>
                   <img src={anime.cover_image} alt='main pic' className='modalPic' />
                   <h3 className='headings title'><b>{anime.title}</b></h3>
                 </div>
-                <div className='btnContainer text-center'>
-                  <button className='btn btn-primary' onClick={this._addFavorite.bind(null, anime)}>Add to Favorites</button>
-                  <button className='btn btn-success' onClick={this._addToWatch.bind(null, anime)}>Add to WatchList</button>
-                </div>
+                { currPage === "search" ?
+                  <div className='btnContainer text-center'>
+                    <button className='btn btn-primary' onClick={this._addFavorite.bind(null, anime)}>Add to Favorites</button>
+                    <button className='btn btn-success' onClick={this._addToWatch.bind(null, anime)}>Add to WatchList</button>
+                  </div>
+                  :
+                  <div className="btnContainer text-center">
+                    <button className="btn btn-danger">Delete</button>
+                  </div>
+                }
                 <div className='animeInfo'>
                   <h4>Type: {anime.show_type}</h4>
                   <h4>Status: {anime.status}</h4>
@@ -157,8 +162,6 @@ export default class AnimeModal extends Component {
                   src={`https://www.youtube.com/embed?listType=search&list=${anime.title} anime`}
                   frameBorder='0'></iframe>
               </div>
-
-
             </div>
           </div>
         </div>

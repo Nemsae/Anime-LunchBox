@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import AnimeStore from '../stores/AnimeStore';
-// import Login from './Login';
 import { AuthActions, signInWithGoogle, signOut, initAuth } from '../actions/AuthActions';
 import ServerActions from '../actions/ServerActions';
 import AuthStore from '../stores/AuthStore';
 import SignInModal from './SignInModal';
+import { browserHistory } from 'react-router';
 
 import { firebaseDb, firebaseCurrentUser } from '../firebase';
 
@@ -70,10 +70,12 @@ export default class NavBar extends Component {
     signOut();
   }
 
+  signUp() {
+    browserHistory.push("/signup");
+  }
+
   render () {
     let { stickers, modal, loggedIn, userNode, userStatus, errorStatus, initSuccess } = this.state;
-    console.log('this.state in navbar: ', this.state);
-    console.log('this.props:', this.props);
     return (
 
       <div className="navbarContainer">
@@ -96,25 +98,25 @@ export default class NavBar extends Component {
               </button>
               <a className="navbar-brand" href="#">Anime LunchBox</a>
             </div>
-            <div className="collapse navbar-collapse" id="myNavbar">
+            <div className= 'collapse navbar-collapse' id="myNavbar">
 
               {
                 // !userStatus.authenticated ?
                 initSuccess ?
-                  <ul className="nav navbar-nav navItemsContainer">
-                    <li className="linkItem" ><Link className='link' to='/'>Home</Link><img className='linkImg' src={stickers.home} /></li>
-                    <li className="linkItem" onClick={this._signOut}><Link className='link' className='link' >SignOut</Link><img className='linkImg' src={stickers.home} /></li>
-                    <li className="linkItem" ><Link className='link' to='/search'>Search</Link><img className='linkImg' src={stickers.search} /></li>
-                    <li className="linkItem" ><Link className='link' to='/favorites'>Favorites</Link><img className='linkImg' src={stickers.favorites} /></li>
-                    <li className="linkItem" ><Link className='link' to='/watchList'>WatchList</Link><img className='linkImg' src={stickers.watchlist} /></li>
+                  <ul className="nav navbar-nav navItemsContainer" data-toggle={window.innerWidth < 768 && 'collapse'} data-target="#myNavbar">
+                    <li className="linkItem"   ><Link className='link' to='/'>Home</Link><img className='linkImg' src={stickers.home}  /></li>
+                    <li className="linkItem"   onClick={this._signOut}><Link className='link' className='link' >SignOut</Link><img className='linkImg' src={stickers.home} /></li>
+                    <li className="linkItem"   ><Link className='link' to='/search'>Search</Link><img className='linkImg' src={stickers.search} /></li>
+                    <li className="linkItem"   ><Link className='link' to='/favorites'>Favorites</Link><img className='linkImg' src={stickers.favorites} /></li>
+                    <li className="linkItem"   ><Link className='link' to='/watchList'>WatchList</Link><img className='linkImg' src={stickers.watchlist} /></li>
                   </ul>
                 :
-                  <ul className="nav navbar-nav navItemsContainer">
-                    <li className="linkItem"><Link className='link' to='/'>Home</Link><img className='linkImg' src={stickers.home} /></li>
-                    <li className="linkItem"><Link className='link' to='/search'>Search</Link><img className='linkImg' src={stickers.search} /></li>
-                    <li className="linkItem" data-toggle="modal" data-target="#myModal"><Link className='link' >Sign In</Link><img className='linkImg' src={stickers.home} /></li>
-                    <li className="linkItem"><Link className='link' ><span className="glyphicon glyphicon-user"></span> Sign Up</Link><img className='linkImg' src={stickers.home} /></li>
-                  </ul>
+                <ul className="nav navbar-nav navItemsContainer" data-toggle={window.innerWidth < 768 && 'collapse'} data-target="#myNavbar">
+                  <li className="linkItem"  ><Link className='link' to='/'>Home</Link><img className='linkImg' data-toggle="collapse" data-target="#myNavbar" src={stickers.home} /></li>
+                  <li className="linkItem"  ><Link className='link' to='/search'>Search</Link><img className='linkImg' src={stickers.search} /></li>
+                  <li className="linkItem"  data-toggle="modal" data-target="#myModal" ><Link className='link' >Sign In</Link><img className='linkImg' src={stickers.home} /></li>
+                  <li className="linkItem" onClick={this.signUp.bind(this)} ><Link className='link' ><span className="glyphicon glyphicon-user"></span> Sign Up</Link><img className='linkImg' src={stickers.home} /></li>
+                </ul>
               }
 
 
@@ -125,7 +127,7 @@ export default class NavBar extends Component {
 
 
         {/* {loggedIn ? <div className='navbar navbar-inverse navbar-fixed-left'>
->>>>>>> 63ddfaf8ab3343e5fce87f9fa746ebc8ee893a1e
+          >>>>>>> 63ddfaf8ab3343e5fce87f9fa746ebc8ee893a1e
           <ul className='nav navbar-nav'>
           <li>Anime<br />LunchBox</li>
           <li><Link className='link' to='/'>Home</Link><img className='linkImg' src={stickers.home} /></li>
@@ -136,14 +138,14 @@ export default class NavBar extends Component {
           </ul>
           </div>
           :
-            <div className='navbar navbar-inverse navbar-fixed-left'>
-              <ul className='nav navbar-nav'>
-                <li>Anime<br />LunchBox</li>
-                  <li><Link className='link' to='/'>Home</Link><img className='linkImg' src={stickers.home} /></li>
-                    <li onClick={this._toggleModal}><a className='link' >Login</a><img className='linkImg' src={stickers.home} /></li>
-                      <li><Link className='link' to='/search'>Search</Link><img className='linkImg' src={stickers.search} /></li>
-        </ul>
-        </div>
+          <div className='navbar navbar-inverse navbar-fixed-left'>
+          <ul className='nav navbar-nav'>
+          <li>Anime<br />LunchBox</li>
+          <li><Link className='link' to='/'>Home</Link><img className='linkImg' src={stickers.home} /></li>
+          <li onClick={this._toggleModal}><a className='link' >Login</a><img className='linkImg' src={stickers.home} /></li>
+          <li><Link className='link' to='/search'>Search</Link><img className='linkImg' src={stickers.search} /></li>
+          </ul>
+          </div>
         } */}
 
 

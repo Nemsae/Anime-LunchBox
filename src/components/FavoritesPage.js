@@ -42,7 +42,7 @@ export default class FavoritesPage extends Component {
     return (
       <div className='componentContainer'>
         <h1>Favorites</h1>
-        <AnimeList animeList={animeFavorites} />
+        <AnimeList animeList={animeFavorites} currPage={'favorites'} />
         {/* <div className="compContainer">
           {
           animeFavorites.map((anime) => {

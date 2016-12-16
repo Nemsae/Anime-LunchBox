@@ -82,7 +82,7 @@ export default class SearchPage extends Component {
           <input ref='searchInput' type='text' className='form-control searchBar' />
           <button className='btn btn-primary' >Search</button>
         </form>
-        <AnimeList animeList={animeResults} />
+        <AnimeList animeList={animeResults} currPage={"search"} />
       </div>
     );
   }
