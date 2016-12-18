@@ -37,22 +37,9 @@ export default class AnimeModal extends Component {
   _addFavorite (anime) {
     let { initStatus } = this.state;
     if (initStatus) {
-    // if (initStatus !== false) {
-      // console.log('Sanity:111');
       let { uid } = initStatus;
-      // console.log('11111111111111initStatus.uid: ', uid);
 
-      // const usersRef = firebaseDb.ref('users');
-      // const currRef = firebaseDb.ref('users').child(uid);
-      // console.log('00000000000000currRef: ', currRef);
-      // currRef.on('value', (snap) => {
-      //   let curr = snap.val();
-      //   console.log('00000000000000currNode: ', curr);
-      // });
-
-      // console.log('anime: ', anime);
       firebaseDb.ref('users/' + `${uid}/` + 'Favorites/' + `${anime.title}/`).update({
-      // firebaseDb.ref('users/' + userId).set({
       id: anime.id,
       status: anime.status,
       title: anime.title,

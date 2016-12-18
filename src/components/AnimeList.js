@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-// import AnimeActions from '../actions/AnimeActions';
 import AnimeStore from '../stores/AnimeStore';
-// import uuid from 'uuid';
 import AnimeModal from './AnimeModal';
 
-// import { firebaseCurrentUser } from '../firebase';
 
 export default class AnimeList extends Component {
   constructor () {
@@ -41,14 +38,10 @@ export default class AnimeList extends Component {
 
   render () {
     let animeList = this.props.animeList;
-    // console.log('00000animeList in AnimeList: ', animeList);
     let AnimeList = [];
     if (typeof animeList === 'object') {
       let keys = Object.keys(animeList) || [];
       AnimeList = keys.map(anime => {
-        // console.log('anime090909090909: ', anime);
-        // console.log('curr09090909090: ', animeList);
-        // console.log('currAnime09090909090: ', animeList[anime]);
         return (
           <div key={animeList[anime].id} className='encloser' onClick={() => this.setCurrAnime(animeList[anime])} data-toggle='modal' data-target={`.bs-example-modal-md`}>
             <div className='animeSquare'>
@@ -63,6 +56,7 @@ export default class AnimeList extends Component {
     }
     let { currAnime, background } = this.state;
     let currPage = this.props.currPage;
+
     return (
       <div className='compContainer'>
         <AnimeModal anime={currAnime} background={background} currPage={currPage} />
