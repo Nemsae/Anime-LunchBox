@@ -63,11 +63,11 @@ export default class AnimeModal extends Component {
   }
 
   _addToWatch (anime) {
+    var show = anime;
     let { initStatus } = this.state;
     if (initStatus) {
       let { uid } = initStatus;
-      let anime = anime;
-      this._animeDetails(anime,'Watchlist', uid);
+      this._animeDetails(show,'Watchlist', uid);
   }
 }
 
