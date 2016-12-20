@@ -24,13 +24,10 @@ export default class SearchPage extends Component {
     AuthStore.startListening(this._onChange);
 
     let { initStatus } = this.state;
-    console.log('00000000000000initStatus in SearchPage: ', initStatus);
     if (initStatus) {
       let currRef = firebaseDb.ref(initStatus.uid);
-      console.log('00000000000000currRef: ', currRef);
       currRef.on('value', (snap) => {
         let curr = snap.val();
-        console.log('----Some Value Changed----: ', curr);
       });
     }
     // const usersRef = firebaseDb.ref('users');
