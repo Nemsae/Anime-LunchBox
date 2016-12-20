@@ -42,7 +42,7 @@ render () {
   let animeList = this.props.animeList || [];
   let currPage = this.props.currPage;
   return (
-    <div>
+    <div className="compContainer">
       <AnimeModal anime={currAnime} background={background} currPage={currPage} />
       {animeList.map(anime => {
         return (
