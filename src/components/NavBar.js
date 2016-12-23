@@ -106,7 +106,7 @@ export default class NavBar extends Component {
                   initSuccess ?
                     <ul className="nav navbar-nav navItemsContainer" data-toggle={window.innerWidth < 768 && 'collapse'} data-target="#myNavbar">
                       <li className="linkItem"   ><Link className='link' to='/'>Home</Link><img className='linkImg' src={stickers.home}  /></li>
-                      <li className="linkItem"   onClick={this._signOut}><Link className='link' className='link' >SignOut</Link><img className='linkImg' src={stickers.home} /></li>
+                      <li className="linkItem"   onClick={this._signOut}><Link className='link' className='link' >SignOut</Link><img className='linkImg' src={stickers.login} /></li>
                       <li className="linkItem"   ><Link className='link' to='/search'>Search</Link><img className='linkImg' src={stickers.search} /></li>
                       <li className="linkItem"   ><Link className='link' to='/favorites'>Favorites</Link><img className='linkImg' src={stickers.favorites} /></li>
                       <li className="linkItem"   ><Link className='link' to='/watchList'>WatchList</Link><img className='linkImg' src={stickers.watchlist} /></li>
@@ -115,7 +115,7 @@ export default class NavBar extends Component {
                   <ul className="nav navbar-nav navItemsContainer" data-toggle={window.innerWidth < 768 && 'collapse'} data-target="#myNavbar">
                     <li className="linkItem"  ><Link className='link' to='/'>Home</Link><img className='linkImg' data-toggle="collapse" data-target="#myNavbar" src={stickers.home} /></li>
                     <li className="linkItem"  ><Link className='link' to='/search'>Search</Link><img className='linkImg' src={stickers.search} /></li>
-                    <li className="linkItem"  data-toggle="modal" data-target="#myModal" ><Link className='link' >Sign In</Link><img className='linkImg' src={stickers.home} /></li>
+                    <li className="linkItem"  data-toggle="modal" data-target="#myModal" ><Link className='link' >Sign In</Link><img className='linkImg' src={stickers.login} /></li>
                     <li className="linkItem" onClick={this.signUp.bind(this)} ><Link className='link' ><span className="glyphicon glyphicon-user"></span> Sign Up</Link><img className='linkImg' src={stickers.home} /></li>
                   </ul>
                 }
