@@ -9,12 +9,13 @@ export default class AnimeModal extends Component {
   constructor () {
     super();
     this.state = {
-      initStatus: AuthStore.getInitStatus()
+      initStatus: AuthStore.getInitStatus(),
     }
     this._addFavorite = this._addFavorite.bind(this);
     this._onChange = this._onChange.bind(this);
     this._addToWatch = this._addToWatch.bind(this);
     this._animeDetails = this._animeDetails.bind(this);
+    this._deleteAnime = this._deleteAnime.bind(this);
   }
 
   componentWillMount () {
@@ -74,7 +75,18 @@ export default class AnimeModal extends Component {
     }
   }
 
+  _deleteAnime(title) {
+    let { currPage } = this.props;
+    let { initStatus } = this.state;
+    if (initStatus) {
+      let { uid } = initStatus;
+      let del = firebaseDb.ref('users').child(uid).child(currPage);
+      del.child(title).remove();
+    }
+  }
+
   render () {
+    let { animeAdded, page } = this.state;
     let { anime, background, currPage } = this.props;
     console.log('anime:', anime);
     let num = Math.floor(Math.random() * background.length);
@@ -101,7 +113,12 @@ export default class AnimeModal extends Component {
                       </div>
                       :
                       <div className="btnContainer text-center">
-                        <button className="btn btn-danger">Delete</button>
+                        <button
+                          className="btn btn-danger"
+                          onClick={this._deleteAnime.bind(null, anime.attributes.titles.en ? anime.attributes.titles.en : anime.attributes.titles.en_jp)}
+                          data-dismiss='modal'
+                        > Delete
+                        </button>
                       </div>
                     }
                     <div className='animeInfo'>
@@ -113,7 +130,7 @@ export default class AnimeModal extends Component {
                     </div>
                     <h4 className='summary'>Summary: {anime.attributes.synopsis}</h4>
                     <div className='genreContainer'>
-                      <h4>Genres:</h4>
+                      {/* <h4>Genres:</h4> */}
                       {
                         // anime.genres !== undefined && anime.genres.map((genre) => {
                         //   console.log('genre.name:', genre.name);
@@ -127,15 +144,15 @@ export default class AnimeModal extends Component {
 
               }
 
-              {
-                Object.keys(anime).length &&
-                  <div className='playerContainer'
-                    style={divStyle}
-                  >
-                    <iframe allowFullScreen='allowFullScreen' id='player' type='text/html' width='640' height='390'
-                      src={anime.attributes.youtubeVideoId ? `https://www.youtube.com/embed?listType=search&list=${anime.attributes.youtubeVideoId}` : `https://www.youtube.com/embed?listType=search&list=${anime.attributes.titles.en ? anime.attributes.titles.en : anime.attributes.titles.en_jp} anime`}
-                      frameBorder='0'></iframe>
-                  </div>
+            {
+              Object.keys(anime).length &&
+              <div className='playerContainer'
+                style={divStyle}
+                >
+                  <iframe allowFullScreen='allowFullScreen' id='player' type='text/html' width='640' height='390'
+                  src={anime.attributes.youtubeVideoId ? `https://www.youtube.com/embed?listType=search&list=${anime.attributes.youtubeVideoId}` : `https://www.youtube.com/embed?listType=search&list=${anime.attributes.titles.en ? anime.attributes.titles.en : anime.attributes.titles.en_jp} anime`}
+                  frameBorder='0'></iframe>
+                </div>
               }
             </div>
           </div>

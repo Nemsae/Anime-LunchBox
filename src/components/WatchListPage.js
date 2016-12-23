@@ -37,7 +37,7 @@ export default class WatchListPage extends Component {
     return (
       <div className='componentContainer'>
         <h1>Watch List</h1>
-        <AnimeList  animeList={watchList} currPage={"watch"}/>
+        <AnimeList  animeList={watchList} currPage={"WatchList"}/>
       </div>
     )
   }

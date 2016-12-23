@@ -37,7 +37,7 @@ export default class FavoritesPage extends Component {
     return (
       <div className='componentContainer'>
         <h1>Favorites</h1>
-        <AnimeList animeList={animeFavorites} currPage={'favorites'} />
+        <AnimeList animeList={animeFavorites} currPage={'Favorites'} />
       </div>
       );
   }

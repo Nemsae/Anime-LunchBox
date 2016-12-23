@@ -17,27 +17,33 @@ const API = {
     });
   },
 
+  addWatchList(title) {
+    ServerActions.receiveWatchList(title);
+  },
+
+  addFavorites(title) {
+    ServerActions.receiveFavorites(title);
+  },
+
   fetchStickers (searchTerm) {
     axios.get(`http://api.giphy.com/v1/stickers/search?q=${searchTerm}&api_key=dc6zaTOxFJmzC`)
-      .then((res) => {
-        ServerActions.receiveStickers(res.data.data);
-      })
-      .catch((err) => {
-        console.log('ERROR! API.fetchStickers', err);
-      });
+    .then((res) => {
+      ServerActions.receiveStickers(res.data.data);
+    })
+    .catch((err) => {
+      console.log('ERROR! API.fetchStickers', err);
+    });
   },
 
   fetchBackground (searchTerm) {
     axios.get(`http://api.giphy.com/v1/gifs/search?q=${searchTerm}&api_key=dc6zaTOxFJmzC`)
-      .then((res) => {
-        ServerActions.receiveBackground(res.data.data);
-      })
-      .catch((err) => {
-        console.log('ERROR! API.fetchStickers', err);
-      });
+    .then((res) => {
+      ServerActions.receiveBackground(res.data.data);
+    })
+    .catch((err) => {
+      console.log('ERROR! API.fetchStickers', err);
+    });
   }
-
-  
 };
 
 export default API;
