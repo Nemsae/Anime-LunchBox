@@ -16,7 +16,6 @@ class AuthStore extends EventEmitter {
     AppDispatcher.register((action) => {
       switch (action.type) {
         case 'SIGN_IN_SUCCESS': {
-          console.log('SIGNIN SUCCESS: ', action.payload);
           let { uid, email, displayName, photoURL } = action.payload;
           _userStatus = {
             authenticated: true,
@@ -25,12 +24,10 @@ class AuthStore extends EventEmitter {
           this.emit('CHANGE');
         } break;
         case 'INIT_AUTH_SUCCESS': {
-          console.log('AUTH SUCCESS: ', action.payload);
           _initStatus = action.payload;
           this.emit('CHANGE');
         } break;
         case 'INIT_AUTH_ERROR': {
-          console.log('AUTH ERROR: ', action.payload);
           _initStatus = false;
           this.emit('CHANGE');
         } break;
@@ -43,7 +40,6 @@ class AuthStore extends EventEmitter {
         } break;
         case 'RECEIVE_USERS': {
           _users = action.payload;
-          console.log('_users in store: ', _users);
           this.emit('CHANGE');
         } break;
       }

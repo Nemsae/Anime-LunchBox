@@ -11,7 +11,6 @@ export default class AnimeList extends Component {
       background: AnimeStore.getBackground(),
       currAnime: [],
     };
-
     this._onChange = this._onChange.bind(this);
     this.setCurrAnime = this.setCurrAnime.bind(this);
   }
@@ -41,7 +40,6 @@ export default class AnimeList extends Component {
     let { currAnime, background } = this.state;
     var animeList = this.props.animeList || {};
     let currPage = this.props.currPage;
-    console.log('animeList3759375982:', animeList);
     return (
       <div className="compContainer">
         <AnimeModal anime={currAnime} background={background} currPage={currPage} />

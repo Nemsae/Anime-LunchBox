@@ -55,8 +55,6 @@ export default class SearchPage extends Component {
 
   render () {
     let { initStatus, animeResults } = this.state;
-
-
     return (
       <div className='componentContainer'>
         <h1>Search Anime</h1>

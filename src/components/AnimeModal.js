@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import AnimeActions from '../actions/AnimeActions';
-// import AnimeStore from '../stores/AnimeStore';
 import AuthStore from '../stores/AuthStore';
 import uuid from 'uuid';
 
@@ -9,7 +8,6 @@ import { firebaseDb, firebaseCurrentUser } from '../firebase';
 export default class AnimeModal extends Component {
   constructor () {
     super();
-
     this.state = {
       initStatus: AuthStore.getInitStatus()
     }
@@ -72,13 +70,11 @@ export default class AnimeModal extends Component {
     let { initStatus } = this.state;
     if (initStatus) {
       let { uid } = initStatus;
-
       this._animeDetails(show,'WatchList', uid);
     }
   }
 
   render () {
-
     let { anime, background, currPage } = this.props;
     console.log('anime:', anime);
     let num = Math.floor(Math.random() * background.length);
@@ -110,11 +106,10 @@ export default class AnimeModal extends Component {
                     }
                     <div className='animeInfo'>
                       <h4>Type: {anime.attributes.showType}</h4>
-                      {/* <h4>Status: {anime.status}</h4> */}
                       <h4>Episodes: {anime.attributes.episodeCount}</h4>
                       <h4>Rating: {Math.round(anime.attributes.averageRating * 100) / 100}</h4>
                       <h4>Rated: {anime.attributes.ageRating}</h4>
-                      <h4>Aired: {anime.attributes.startDate} - {anime.attributes.endDate}</h4>
+                      <h4>Aired: {anime.attributes.startDate} - {anime.attributes.endDate || 'Still Airing'}</h4>
                     </div>
                     <h4 className='summary'>Summary: {anime.attributes.synopsis}</h4>
                     <div className='genreContainer'>
@@ -143,7 +138,6 @@ export default class AnimeModal extends Component {
                   </div>
               }
             </div>
-
           </div>
         </div>
       </div>
