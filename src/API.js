@@ -36,6 +36,8 @@ const API = {
         console.log('ERROR! API.fetchStickers', err);
       });
   }
+
+  
 };
 
 export default API;

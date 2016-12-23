@@ -22,29 +22,21 @@ const AnimeActions = {
     API.receiveSearchResults(searchTerm);
   },
 
-  updateFavorites (favorites) {
-    console.log('favorites in AnimeActions: ', favorites);
-    AppDispatcher.dispatch({
-      type: 'RECEIVE_FAVORITES',
-      payload: { favorites }
-    });
+  addFavorites (favorites) {
+    API.addFavorites(favorites);
   },
 
-  updateWatchList (watchList) {
-    console.log('watchList in AnimeActions: ', watchList);
-    AppDispatcher.dispatch({
-      type: 'RECEIVE_WATCHLIST',
-      payload: { watchList }
-    });
+  addWatchList (watchList) {
+  API.addWatchList(watchList);
   },
 
-//   deleteFavorite (id) {
-//     API.deleteFavorite(id);
-//   },
-//
-//   deleteToWatch (id) {
-//     API.deleteToWatch(id);
-//   }
+  deleteFavorite (title) {
+    API.deleteFavorite(title);
+  },
+
+  deleteToWatch (title) {
+    API.deleteToWatch(title);
+  }
 };
 
 export default AnimeActions;

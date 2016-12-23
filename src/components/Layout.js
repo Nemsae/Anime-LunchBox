@@ -50,14 +50,14 @@ export default class Layout extends Component {
       //  Firebase RTDB node ref for current user's Favorite
       currFavRef.on('value', (snap) => {
         let favs = snap.val();
-        AnimeActions.updateFavorites(favs)
+        AnimeActions.addFavorites(favs)
       });
 
       //  Firebase RTDB node ref for current logged in user
       currWatchRef.on('value', (snap) => {
         let watch = snap.val();
         console.log('WatchList LayOut!@!!!!:', watch);
-        AnimeActions.updateWatchList(watch);
+        AnimeActions.addWatchList(watch);
       });
     }
     return (
