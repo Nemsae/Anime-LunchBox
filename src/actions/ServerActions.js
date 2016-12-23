@@ -16,6 +16,7 @@ const ServerActions = {
   },
 
   receiveWatchList (watchList) {
+    console.log('THAT WATCHLIST THOUGHHH35345', watchList);
     AppDispatcher.dispatch({
       type: 'RECEIVE_WATCHLIST',
       payload: {watchList}

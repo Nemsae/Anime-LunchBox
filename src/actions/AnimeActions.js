@@ -26,7 +26,7 @@ const AnimeActions = {
     console.log('favorites in AnimeActions: ', favorites);
     AppDispatcher.dispatch({
       type: 'RECEIVE_FAVORITES',
-      payload: {favorites}
+      payload: { favorites }
     });
   },
 
@@ -34,7 +34,7 @@ const AnimeActions = {
     console.log('watchList in AnimeActions: ', watchList);
     AppDispatcher.dispatch({
       type: 'RECEIVE_WATCHLIST',
-      payload: {watchList}
+      payload: { watchList }
     });
   },
 

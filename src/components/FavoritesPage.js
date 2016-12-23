@@ -37,7 +37,6 @@ export default class FavoritesPage extends Component {
 
   render () {
     let { animeFavorites } = this.state;
-    console.log('favs in component:', animeFavorites);
     return (
       <div className='componentContainer'>
         <h1>Favorites</h1>

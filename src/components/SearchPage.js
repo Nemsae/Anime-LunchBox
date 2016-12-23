@@ -30,26 +30,12 @@ export default class SearchPage extends Component {
         let curr = snap.val();
       });
     }
-    // const usersRef = firebaseDb.ref('users');
-    // console.log('00000000000000usersRef: ', usersRef);
-    // usersRef.on('value', (snap) => {
-    //   let users = snap.val();
-    //   console.log('----Some Value Changed----: ', users);
-    // });
   }
 
   componentWillUnmount () {
     AnimeStore.stopListening(this._onChange);
     AuthStore.stopListening(this._onChange);
   }
-
-  // shouldComponentUpdate () {
-  // componentDidMount () {
-    // console.log('--componentDidMount--');
-    // console.log('--shouldComponentUpdate--');
-
-  //   return true;
-  // }
 
   _onChange () {
     this.setState({
@@ -69,7 +55,6 @@ export default class SearchPage extends Component {
 
   render () {
     let { initStatus, animeResults } = this.state;
-    // let { animeResults } = this.state;
 
 
     return (
