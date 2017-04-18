@@ -8,11 +8,9 @@ import AnimeList from './AnimeList';
 export default class FavoritesPage extends Component {
   constructor () {
     super();
-
     this.state = {
       animeFavorites: AnimeStore.getFavorites()
     };
-
     this._onChange = this._onChange.bind(this);
     this._deleteFavorite = this._deleteFavorite.bind(this);
   }
@@ -32,16 +30,14 @@ export default class FavoritesPage extends Component {
   }
 
   _deleteFavorite (id) {
-    AnimeActions.deleteFavorite(id);
   }
 
   render () {
     let { animeFavorites } = this.state;
-    console.log('favs in component:', animeFavorites);
     return (
       <div className='componentContainer'>
         <h1>Favorites</h1>
-        <AnimeList animeList={animeFavorites} currPage={'favorites'} />
+        <AnimeList animeList={animeFavorites} currPage={'Favorites'} />
       </div>
       );
   }

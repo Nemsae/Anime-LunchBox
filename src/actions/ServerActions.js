@@ -11,16 +11,17 @@ const ServerActions = {
   receiveFavorites (favorites) {
     AppDispatcher.dispatch({
       type: 'RECEIVE_FAVORITES',
-      payload: {favorites}
+      payload: { favorites }
     });
   },
 
   receiveWatchList (watchList) {
     AppDispatcher.dispatch({
       type: 'RECEIVE_WATCHLIST',
-      payload: {watchList}
+      payload: { watchList }
     });
   },
+
 
   receiveStickers (stickers) {
     AppDispatcher.dispatch({

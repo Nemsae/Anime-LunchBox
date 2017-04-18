@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 
 import { AuthActions, signInWithGoogle, signOut } from '../actions/AuthActions';
-// console.log('AuthActions: ', AuthActions);
 import ServerActions from '../actions/ServerActions';
-// console.log('ServerActions: ', ServerActions);
 import AuthStore from '../stores/AuthStore';
 import SignInModal from './SignInModal';
 
@@ -47,12 +45,10 @@ export default class SignIn extends Component {
   render () {
     let { userStatus, errorStatus } = this.state;
     console.log('userStatus: ', userStatus);
-    // console.log('errorStatus: ', errorStatus);
     return (
       <div className='SignInContainer'>
         <SignInModal />
         <div className =''>
-          {/* <div className='modalContent'></div> */}
           { userStatus.authenticated ?
             <button onClick={this._signOut}>Sign Out</button> :
             <button data-toggle="modal" data-target="#myModal">Sign In</button>

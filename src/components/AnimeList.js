@@ -11,7 +11,6 @@ export default class AnimeList extends Component {
       background: AnimeStore.getBackground(),
       currAnime: [],
     };
-
     this._onChange = this._onChange.bind(this);
     this.setCurrAnime = this.setCurrAnime.bind(this);
   }
@@ -36,34 +35,30 @@ export default class AnimeList extends Component {
     });
   }
 
-  render () {
-    let animeList = this.props.animeList;
-    let AnimeList = [];
-    if (typeof animeList === 'object') {
-      let keys = Object.keys(animeList) || [];
-      AnimeList = keys.map(anime => {
-        return (
-          <div key={animeList[anime].id} className='encloser' onClick={() => this.setCurrAnime(animeList[anime])} data-toggle='modal' data-target={`.bs-example-modal-md`}>
-            <div className='animeSquare'>
-              <div className='picContainer'>
-                <img src={animeList[anime].cover_image} className='pic' />
-              </div>
-              <h4>{animeList[anime].title}</h4>
-            </div>
-          </div>
-        );
-      });
-    }
-    let { currAnime, background } = this.state;
-    let currPage = this.props.currPage;
 
+  render () {
+    let { currAnime, background } = this.state;
+    var animeList = this.props.animeList || {};
+    let currPage = this.props.currPage;
     return (
-      <div className='compContainer'>
+      <div className="compContainer">
         <AnimeModal anime={currAnime} background={background} currPage={currPage} />
         {
-          AnimeList
+          Object.keys(animeList || {}).map(item => {
+            const anime = animeList[item];
+            return (
+              <div key={anime.id} className='encloser' onClick={() => this.setCurrAnime(anime)} data-toggle='modal' data-target={`.bs-example-modal-md`}>
+                <div className='animeSquare'>
+                  <div className='picContainer'>
+                    <img src={anime.attributes.posterImage.original || ''} className='pic' />
+                  </div>
+                  <h4>{anime.attributes.titles.en ? anime.attributes.titles.en : anime.attributes.titles.en_jp}</h4>
+                </div>
+              </div>
+            )
+          })
         }
       </div>
-    );
+    )
   }
 }

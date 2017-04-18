@@ -1,17 +1,8 @@
 import React, { Component } from 'react';
 import { browserHistory } from 'react-router';
-// import Login from './Login';
-// import { AuthActions, signInWithGoogle, signOut } from '../actions/AuthActions';
-// console.log('AuthActions: ', AuthActions);
-// import ServerActions from '../actions/ServerActions';
-// console.log('ServerActions: ', ServerActions);
-// import AuthStore from '../stores/AuthStore';
-
 
 export default function SignInModal (props) {
-    // let { userStatus, errorStatus } = this.state;
-    // console.log('userStatus: ', userStatus);
-    // console.log('errorStatus: ', errorStatus);
+
   function signUp(e) {
     e.preventDefault();
       browserHistory.push("/signup")

@@ -5,7 +5,6 @@ import AnimeActions from '../actions/AnimeActions';
 import AuthStore from '../stores/AuthStore';
 import { firebaseDb } from '../firebase';
 
-// export default function Layout(props) {
 export default class Layout extends Component {
   constructor () {
     super();
@@ -20,39 +19,12 @@ export default class Layout extends Component {
     AuthStore.startListening(this._onChange);
 
     let { initStatus } = this.state;
-    // console.log('LAYOUT initStatus: ', initStatus);
-    // // if (initStatus) {
-    //   // let currRef = firebaseDb.ref(initStatus.uid);
-    //   // console.log('LAYOUT currRef: ', currRef);
-    // const usersRef = firebaseDb.ref('users');
-    // // const currRef = usersRef.child(initStatus.uid);
-    // usersRef.on('value', (snap) => {
-    //   let curr = snap.val();
-    //   console.log('----LAYOUT Some Value Changed----: ', curr);
-    //   AnimeActions.updateDatabase
-    // });
-    // }
-
-
-    // const usersRef = firebaseDb.ref('users');
-    // console.log('00000000000000usersRef: ', usersRef);
-    // usersRef.on('value', (snap) => {
-    //   let users = snap.val();
-    //   console.log('----Some Value Changed----: ', users);
-    // });
   }
 
   componentWillUnmount () {
     AuthStore.stopListening(this._onChange);
   }
 
-  // shouldComponentUpdate () {
-  // componentDidMount () {
-    // console.log('--componentDidMount--');
-    // console.log('--shouldComponentUpdate--');
-
-  //   return true;
-  // }
 
   _onChange () {
     this.setState({
@@ -64,7 +36,6 @@ export default class Layout extends Component {
     let { initStatus } = this.state;
     if (initStatus) {
       let { uid } = initStatus;
-      // console.log('LAYOUT uid: ', uid);
 
       const usersRef = firebaseDb.ref('users');
       const currRef = usersRef.child(initStatus.uid);
@@ -74,21 +45,19 @@ export default class Layout extends Component {
       //  Firebase RTDB node ref for current logged in user
       currRef.on('value', (snap) => {
         let curr = snap.val();
-        // console.log('----LAYOUT Some Value Changed----: ', curr);
       });
 
       //  Firebase RTDB node ref for current user's Favorite
       currFavRef.on('value', (snap) => {
         let favs = snap.val();
-        // console.log('----LAYOUT Favorites Changed----: ', favs);
-        AnimeActions.updateFavorites(favs)
+        AnimeActions.addFavorites(favs)
       });
 
       //  Firebase RTDB node ref for current logged in user
       currWatchRef.on('value', (snap) => {
         let watch = snap.val();
-        // console.log('----LAYOUT WatchList Changed----: ', watch);
-        AnimeActions.updateWatchList(watch);
+        console.log('WatchList LayOut!@!!!!:', watch);
+        AnimeActions.addWatchList(watch);
       });
     }
     return (

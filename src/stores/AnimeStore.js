@@ -4,8 +4,14 @@ import AppDispatcher from '../AppDispatcher';
 let _animeResults = [];
 let _favorites = [];
 let _watchList = [];
-let _stickers = {home: 'https://slack-imgs.com/?c=1&url=https%3A%2F%2Fmedia.giphy.com%2Fmedia%2FkuWN0iF9BLQKk%2Fgiphy.gif', search: 'https://media.giphy.com/media/Is54ejaz7HiZW/giphy.gif', favorites: 'https://media.giphy.com/media/SVacpp6YPRtTO/giphy.gif', watchlist: 'https://media.giphy.com/media/KG5hDHiZVEmZO/giphy.gif'};
 let _backgroundImage = '';
+let _stickers = {
+  home: 'https://slack-imgs.com/?c=1&url=https%3A%2F%2Fmedia.giphy.com%2Fmedia%2FkuWN0iF9BLQKk%2Fgiphy.gif',
+  login: 'https://media.giphy.com/media/jDWQL2uPrBNn2/giphy.gif',
+  search: 'https://media.giphy.com/media/Is54ejaz7HiZW/giphy.gif',
+  favorites: 'https://media.giphy.com/media/SVacpp6YPRtTO/giphy.gif',
+  watchlist: 'https://media.giphy.com/media/KG5hDHiZVEmZO/giphy.gif'
+};
 
 class AnimeStore extends EventEmitter {
   constructor () {
@@ -20,13 +26,14 @@ class AnimeStore extends EventEmitter {
         } break;
         case 'RECEIVE_FAVORITES': {
           let {favorites} = action.payload;
-          // console.log('favorites in store: ', favorites);
+          console.log('favorites in store: ', favorites);
           _favorites = favorites;
           this.emit('CHANGE');
         } break;
         case 'RECEIVE_WATCHLIST': {
+          console.log('action.payload:', action.payload);
           let {watchList} = action.payload;
-          // console.log('watchList in store: ', watchList);
+          console.log('watchList in store: ', watchList);
           _watchList = watchList;
           this.emit('CHANGE');
         } break;

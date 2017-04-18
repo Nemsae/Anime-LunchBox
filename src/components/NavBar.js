@@ -78,82 +78,84 @@ export default class NavBar extends Component {
     let { stickers, modal, loggedIn, userNode, userStatus, errorStatus, initSuccess } = this.state;
     return (
 
-      <div className="navbarContainer">
-        <div className="userName">
-          <img className="userNameImage" src="https://media.giphy.com/media/Kj9MIveYFMKvS/giphy.gif" alt=""/>
-          {
-            initSuccess ? <h3 className="userNameText">{initSuccess.displayName}</h3> : <h3 className="userNameText">Guest</h3>
-            // userStatus.authenticated ? <h3 className="userNameText">{userStatus.user.displayName}</h3> : <h3 className="userNameText">Guest</h3>
-          }
+
+        <div className="navbarContainer">
+          <div className="userName">
+            <img className="userNameImage" src="https://media.giphy.com/media/Kj9MIveYFMKvS/giphy.gif" alt=""/>
+            {
+              initSuccess ? <h3 className="userNameText">{initSuccess.displayName}</h3> : <h3 className="userNameText">Guest</h3>
+              // userStatus.authenticated ? <h3 className="userNameText">{userStatus.user.displayName}</h3> : <h3 className="userNameText">Guest</h3>
+            }
+          </div>
+
+          <SignInModal signIn={this._googleSignIn} />
+          <nav className="navbar navbar-inverse">
+            <div className="">
+              <div className="navbar-header">
+                <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                  <span className="icon-bar"></span>
+                  <span className="icon-bar"></span>
+                  <span className="icon-bar"></span>
+                </button>
+                <a className="navbar-brand" href="#">Anime LunchBox</a>
+              </div>
+              <div className= 'collapse navbar-collapse' id="myNavbar">
+
+                {
+                  // !userStatus.authenticated ?
+                  initSuccess ?
+                    <ul className="nav navbar-nav navItemsContainer" data-toggle={window.innerWidth < 768 && 'collapse'} data-target="#myNavbar">
+                      <li className="linkItem"   ><Link className='link' to='/'>Home</Link><img className='linkImg' src={stickers.home}  /></li>
+                      <li className="linkItem"   onClick={this._signOut}><Link className='link' className='link' >SignOut</Link><img className='linkImg' src={stickers.login} /></li>
+                      <li className="linkItem"   ><Link className='link' to='/search'>Search</Link><img className='linkImg' src={stickers.search} /></li>
+                      <li className="linkItem"   ><Link className='link' to='/favorites'>Favorites</Link><img className='linkImg' src={stickers.favorites} /></li>
+                      <li className="linkItem"   ><Link className='link' to='/watchList'>WatchList</Link><img className='linkImg' src={stickers.watchlist} /></li>
+                    </ul>
+                  :
+                  <ul className="nav navbar-nav navItemsContainer" data-toggle={window.innerWidth < 768 && 'collapse'} data-target="#myNavbar">
+                    <li className="linkItem"  ><Link className='link' to='/'>Home</Link><img className='linkImg' data-toggle="collapse" data-target="#myNavbar" src={stickers.home} /></li>
+                    <li className="linkItem"  ><Link className='link' to='/search'>Search</Link><img className='linkImg' src={stickers.search} /></li>
+                    <li className="linkItem"  data-toggle="modal" data-target="#myModal" ><Link className='link' >Sign In</Link><img className='linkImg' src={stickers.login} /></li>
+                    <li className="linkItem" onClick={this.signUp.bind(this)} ><Link className='link' ><span className="glyphicon glyphicon-user"></span> Sign Up</Link><img className='linkImg' src={stickers.home} /></li>
+                  </ul>
+                }
+
+
+              </div>
+            </div>
+          </nav>
+
+
+
+          {/* {loggedIn ? <div className='navbar navbar-inverse navbar-fixed-left'>
+            >>>>>>> 63ddfaf8ab3343e5fce87f9fa746ebc8ee893a1e
+            <ul className='nav navbar-nav'>
+            <li>Anime<br />LunchBox</li>
+            <li><Link className='link' to='/'>Home</Link><img className='linkImg' src={stickers.home} /></li>
+            <li onClick={this._toggleModal}><a className='link' >SignOut</a><img className='linkImg' src={stickers.home} /></li>
+            <li><Link className='link' to='/search'>Search</Link><img className='linkImg' src={stickers.search} /></li>
+            <li><Link className='link' to='/favorites'>Favorites</Link><img className='linkImg' src={stickers.favorites} /></li>
+            <li><Link className='link' to='/watchList'>WatchList</Link><img className='linkImg' src={stickers.watchlist} /></li>
+            </ul>
+            </div>
+            :
+            <div className='navbar navbar-inverse navbar-fixed-left'>
+            <ul className='nav navbar-nav'>
+            <li>Anime<br />LunchBox</li>
+            <li><Link className='link' to='/'>Home</Link><img className='linkImg' src={stickers.home} /></li>
+            <li onClick={this._toggleModal}><a className='link' >Login</a><img className='linkImg' src={stickers.home} /></li>
+            <li><Link className='link' to='/search'>Search</Link><img className='linkImg' src={stickers.search} /></li>
+            </ul>
+            </div>
+          } */}
+
+
+
+
+
+          {/* <SignIn /> */}
         </div>
 
-        <SignInModal signIn={this._googleSignIn} />
-        <nav className="navbar navbar-inverse">
-          <div className="">
-            <div className="navbar-header">
-              <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                <span className="icon-bar"></span>
-                <span className="icon-bar"></span>
-                <span className="icon-bar"></span>
-              </button>
-              <a className="navbar-brand" href="#">Anime LunchBox</a>
-            </div>
-            <div className= 'collapse navbar-collapse' id="myNavbar">
-
-              {
-                // !userStatus.authenticated ?
-                initSuccess ?
-                  <ul className="nav navbar-nav navItemsContainer" data-toggle={window.innerWidth < 768 && 'collapse'} data-target="#myNavbar">
-                    <li className="linkItem"   ><Link className='link' to='/'>Home</Link><img className='linkImg' src={stickers.home}  /></li>
-                    <li className="linkItem"   onClick={this._signOut}><Link className='link' className='link' >SignOut</Link><img className='linkImg' src={stickers.home} /></li>
-                    <li className="linkItem"   ><Link className='link' to='/search'>Search</Link><img className='linkImg' src={stickers.search} /></li>
-                    <li className="linkItem"   ><Link className='link' to='/favorites'>Favorites</Link><img className='linkImg' src={stickers.favorites} /></li>
-                    <li className="linkItem"   ><Link className='link' to='/watchList'>WatchList</Link><img className='linkImg' src={stickers.watchlist} /></li>
-                  </ul>
-                :
-                <ul className="nav navbar-nav navItemsContainer" data-toggle={window.innerWidth < 768 && 'collapse'} data-target="#myNavbar">
-                  <li className="linkItem"  ><Link className='link' to='/'>Home</Link><img className='linkImg' data-toggle="collapse" data-target="#myNavbar" src={stickers.home} /></li>
-                  <li className="linkItem"  ><Link className='link' to='/search'>Search</Link><img className='linkImg' src={stickers.search} /></li>
-                  <li className="linkItem"  data-toggle="modal" data-target="#myModal" ><Link className='link' >Sign In</Link><img className='linkImg' src={stickers.home} /></li>
-                  <li className="linkItem" onClick={this.signUp.bind(this)} ><Link className='link' ><span className="glyphicon glyphicon-user"></span> Sign Up</Link><img className='linkImg' src={stickers.home} /></li>
-                </ul>
-              }
-
-
-            </div>
-          </div>
-        </nav>
-
-
-
-        {/* {loggedIn ? <div className='navbar navbar-inverse navbar-fixed-left'>
-          >>>>>>> 63ddfaf8ab3343e5fce87f9fa746ebc8ee893a1e
-          <ul className='nav navbar-nav'>
-          <li>Anime<br />LunchBox</li>
-          <li><Link className='link' to='/'>Home</Link><img className='linkImg' src={stickers.home} /></li>
-          <li onClick={this._toggleModal}><a className='link' >SignOut</a><img className='linkImg' src={stickers.home} /></li>
-          <li><Link className='link' to='/search'>Search</Link><img className='linkImg' src={stickers.search} /></li>
-          <li><Link className='link' to='/favorites'>Favorites</Link><img className='linkImg' src={stickers.favorites} /></li>
-          <li><Link className='link' to='/watchList'>WatchList</Link><img className='linkImg' src={stickers.watchlist} /></li>
-          </ul>
-          </div>
-          :
-          <div className='navbar navbar-inverse navbar-fixed-left'>
-          <ul className='nav navbar-nav'>
-          <li>Anime<br />LunchBox</li>
-          <li><Link className='link' to='/'>Home</Link><img className='linkImg' src={stickers.home} /></li>
-          <li onClick={this._toggleModal}><a className='link' >Login</a><img className='linkImg' src={stickers.home} /></li>
-          <li><Link className='link' to='/search'>Search</Link><img className='linkImg' src={stickers.search} /></li>
-          </ul>
-          </div>
-        } */}
-
-
-
-
-
-        {/* <SignIn /> */}
-          </div>
 
     );
   }
