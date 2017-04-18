@@ -9,7 +9,7 @@ Deployed on Heroku [here](https://anime-lunchbox-app.herokuapp.com/).
 
 Latest Release: December 6th, 2016.
 
-<img src="https://imgur.com/a/w2igs" />
+<img src="/public/assets/animeLunchBox-search-page.png" />
 
 ## CONTRIBUTORS:
   1. [John Son](https://github.com/Nemsae)
