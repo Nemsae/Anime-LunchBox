@@ -5,11 +5,11 @@
 ## DESCRIPTION:
 Add anime to your Anime Lunchbox by adding to favorites and watchlist! Curious to know if an anime is still airing? Or maybe if you saw every episode of a specific anime? Find out by using Anime Lunchbox! With Anime Lunchbox you can see if an anime is still airing, the number of episodes available, genres, or watch a preview of an anime.
 
-Deployed on Heroku [here](http://imgur.com/a/w2igs).
+Deployed on Heroku [here](https://anime-lunchbox-app.herokuapp.com/).
 
 Latest Release: December 6th, 2016.
 
-<img src="http://imgur.com/a/yyElV" />
+<img src="https://imgur.com/a/w2igs" />
 
 ## CONTRIBUTORS:
   1. [John Son](https://github.com/Nemsae)
